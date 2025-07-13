@@ -38,7 +38,7 @@ export const authApiSlice = createApi({
       process.env.NODE_ENV === "production"
         ? process.env.NEXT_PUBLIC_API_URL_PRODUCTION
         : process.env.NEXT_PUBLIC_API_URL_DEVELOPMENT
-    }auth`,
+    }/auth`,
     credentials: "include",
   }),
   tagTypes: ["Auth"],

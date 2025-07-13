@@ -25,7 +25,7 @@ export const chatbotApiSlice = createApi({
       process.env.NODE_ENV === "production"
         ? process.env.NEXT_PUBLIC_API_URL_PRODUCTION
         : process.env.NEXT_PUBLIC_API_URL_DEVELOPMENT
-    }chatbot`,
+    }/chatbot`,
     credentials: "include",
   }),
   tagTypes: ["Chatbot"],

@@ -23,8 +23,7 @@ import {
 } from "lucide-react";
 import NavMainClientDashboard from "./NavMainClientDashboard";
 import Image from "next/image";
-import logoImage from "../../../public/mojeb-ai-logo.png";
-import useClient from "@/hooks/useClient";
+import logoImage from "../../public/mojeb-ai-logo.png";
 import useAuth from "@/hooks/useAuth";
 // Define interfaces for type safety
 interface NavItem {
