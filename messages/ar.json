@@ -1,5 +1,830 @@
 {
-  "HomePage": {
-    "title": "مرحباً بك في تطبيقي"
+  "Header": {
+    "home": "الرئيسية",
+    "features": "الميزات",
+    "pricing": "الأسعار",
+    "contact": "اتصل بنا",
+    "getStarted": "ابدأ الآن"
+  },
+  "Hero": {
+    "title": "مُجيب… صوتك الأول مع العميل، وانطباعك اللي ما ينسى. يرد، يفهم، ويخدم… قبل لا ترد أنت",
+    "getStarted": "ابدأ الآن",
+    "listen": "استمع الان",
+    "dir": "rtl"
+  },
+  "Features": {
+    "title": "مميزاتنا الجوهرية",
+    "feature1": {
+      "description": "صوت بشري مخصص لكل منشأة أو علامة تجارية."
+    },
+    "feature2": {
+      "description": "تكامل مباشر مع أنظمة التذاكر و CRM."
+    },
+    "feature3": {
+      "description": "تحليل المكالمة وتقديم ملخص دقيق للطلب."
+    },
+    "feature4": {
+      "description": "تخصيص سيناريوهات متنوعة حسب كل جهة."
+    },
+    "feature5": {
+      "description": "إرسال الطلبات أو التنبيهات مباشرة لفريق العمل."
+    },
+    "feature6": {
+      "description": "دعم للغة العربية واللهجات المحلية"
+    }
+  },
+  "Footer": {
+    "facebookLink": "https://facebook.com",
+    "twitterLink": "https://twitter.com",
+    "linkedinLink": "https://linkedin.com",
+    "whatsappLink": "https://whatsapp.com",
+    "about": "من نحن",
+    "services": "خدماتنا",
+    "contact": "اتصل بنا",
+    "phone": "رقم الهاتف: 0000000000",
+    "email": "البريد الإلكتروني: info@example.com",
+    "address": "مكان ما في العالم",
+    "copyright": "© {year} جميع الحقوق محفوظة"
+  },
+  "Login": {
+    "title": "تسجيل الدخول",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "example@domain.com",
+    "password": "كلمة المرور",
+    "passwordPlaceholder": "••••••••",
+    "submit": "تسجيل الدخول",
+    "loading": "جاري تسجيل الدخول...",
+    "forgetPassword": "نسيت كلمة المرور؟",
+    "createAccount": "إنشاء حساب",
+    "validation": {
+      "emailInvalid": "عنوان بريد إلكتروني غير صالح",
+      "required": "هذا الحقل مطلوب",
+      "passwordMin": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل"
+    }
+  },
+  "ForgetPassword": {
+    "title": "نسيت كلمة المرور",
+    "email": "البريد الإلكتروني",
+    "submit": "ارسال الرمز الخاص بك",
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+    "loading": "جاري ارسال الرمز..."
+  },
+  "SectionCards": {
+    "cards": {
+      "totalUser": {
+        "title": "إجمالي المستخدمين",
+        "value": "$100",
+        "trend": "+12.5%",
+        "footerTitle": "في ارتفاع هذا الشهر",
+        "footerDescription": "الزوار خلال الستة أشهر الماضية"
+      },
+      "totalCalls": {
+        "title": "إجمالي المكالمات",
+        "value": "1,234",
+        "trend": "-20%",
+        "footerTitle": "انخفاض 20% هذه الفترة",
+        "footerDescription": "تحتاج عملية الاكتساب إلى الاهتمام"
+      },
+      "totalSubscriptions": {
+        "title": "إجمالي الاشتراكات",
+        "value": "45,678",
+        "trend": "+12.5%",
+        "footerTitle": "احتفاظ قوي بالمستخدمين",
+        "footerDescription": "تجاوز المشاركة الأهداف"
+      },
+      "expiringSoon": {
+        "title": "تنتهي قريبًا",
+        "value": "4.5%",
+        "trend": "+4.5%",
+        "footerTitle": "زيادة ثابتة في الأداء",
+        "footerDescription": "يلبي توقعات النمو"
+      }
+    }
+  },
+  "AdminSidebar": {
+    "brandName": "مجيب AI",
+    "navItems": {
+      "dashboard": "لوحة التحكم",
+      "clients": "العملاء",
+      "analytics": "التحليلات",
+      "usersRoles": "المستخدمين والأدوار",
+      "subscriptions": "الاشتراكات",
+      "settings": "الإعدادات",
+      "plans": "الخطط"
+    },
+    "user": {
+      "logout": "تسجيل الخروج"
+    }
+  },
+  "clientSidebar": {
+    "brandName": "مجيب AI",
+    "navItems": {
+      "dashboard": "لوحة التحكم",
+      "callsAndTickets": "المكالمات والتذاكر",
+      "voiceScript": "الاسكريبت الصوتي",
+      "performanceAnalytics": "تحليلات الأداء",
+      "aiOutbound": "اوتبوند AI",
+      "settings": "الإعدادات"
+    },
+    "user": {
+      "logout": "تسجيل الخروج"
+    }
+  },
+  "UsageWarning": {
+    "title": "تحذير الاستخدام",
+    "upgradeButton": "ترقية الخطة"
+  },
+  "RecentClients": {
+    "title": "العملاء الحديثون",
+    "columns": {
+      "name": "الاسم",
+      "date": "التاريخ",
+      "duration": "المدة",
+      "ticket": "التذكرة"
+    },
+    "viewAll": "عرض الكل",
+    "showing": "عرض",
+    "of": "من",
+    "clients": "العملاء"
+  },
+  "DataUsage": {
+    "title": "استخدام البيانات",
+    "used": "مستعمل",
+    "of": "من",
+    "limit": "حدك المسموح",
+    "usage": "{used} مستخدم من {total}"
+  },
+  "Dashboard": {
+    "Header": {
+      "language": "اللغة",
+      "notifications": "الإشعارات",
+      "noNotifications": "لا توجد إشعارات جديدة",
+      "toggleTheme": "تبديل السمة",
+      "light": "فاتح",
+      "dark": "داكن",
+      "system": "النظام",
+      "userProfile": "ملف المستخدم"
+    }
+  },
+  "VoiceScript": {
+    "addScript": "إضافة نص",
+    "saveChanges": "حفظ التغييرات",
+    "saving": "جاري الحفظ...",
+    "loading": "جاري تحميل نصوص الصوت",
+    "error": "خطأ في تحميل نصوص الصوت"
+  },
+  "KeywordModal": {
+    "updateTitle": "تحديث الكلمة المفتاحية",
+    "updateDescription": "قم بتعديل السؤال والإجابة والكلمة المفتاحية المرتبطة",
+    "questionLabel": "السؤال",
+    "questionPlaceholder": "أدخل السؤال...",
+    "answerLabel": "الإجابة",
+    "answerPlaceholder": "أدخل الإجابة...",
+    "keywordLabel": "الكلمة المفتاحية",
+    "keywordPlaceholder": "أدخل الكلمة المفتاحية...",
+    "cancelButton": "إلغاء",
+    "updateButton": "تحديث",
+    "updatingButton": "جاري التحديث..."
+  },
+  "VoiceScriptHeader": {
+    "title": "إدارة نصوص الصوت",
+    "subtitle": "نصوص مخصصة لمتحدث الذكاء الاصطناعي لعملائك"
+  },
+  "MainConversationScript": {
+    "title": "النص الرئيسي للمحادثة",
+    "addButton": "إضافة سطر جديد",
+    "deleteButton": "حذف"
+  },
+  "KeywordBaseReplies": {
+    "title": "الردود القائمة على الكلمات المفتاحية",
+    "keywordHeader": "الكلمة المفتاحية",
+    "responseHeader": "رد الذكاء الاصطناعي",
+    "actionsHeader": "الإجراءات",
+    "editButton": "تعديل",
+    "saveButton": "حفظ النص",
+    "restoreButton": "استعادة النسخة السابقة"
+  },
+  "ConversationScript": {
+    "noScriptsAvailable": "لا توجد نصوص محادثة متاحة",
+    "customer": "العميل",
+    "aiName": "مُجيب AI"
+  },
+  "CallGreeting": {
+    "title": "تحية المكالمة",
+    "inputPlaceholder": "اكتب التحية لاختبار الصوت",
+    "languageLabel": "اللغة",
+    "languagePlaceholder": "اختر اللغة",
+    "voiceLabel": "الصوت",
+    "voicePlaceholder": "اختر الصوت",
+    "playButtonAria": "تشغيل التحية",
+    "instructions": "اختر اللغة والصوت، ثم اكتب التحية لاختبارها."
+  },
+  "AddConversationModal": {
+    "title": "إضافة نص محادثة",
+    "customerLabel": "العميل",
+    "aiLabel": "معجب الذكاء الاصطناعي",
+    "customerMessageLabel": "رسالة العميل",
+    "aiResponseLabel": "رد الذكاء الاصطناعي",
+    "keywordLabel": "الكلمة المفتاحية",
+    "cancelButton": "إلغاء",
+    "addButton": "إضافة محادثة",
+    "processingButton": "جاري المعالجة..."
+  },
+  "AccountSettings": {
+    "title": "إعدادات الحساب",
+    "editButton": "تعديل",
+    "emailLabel": "البريد الإلكتروني",
+    "addressLabel": "العنوان",
+    "phoneLabel": "رقم الهاتف"
+  },
+  "IntegrationSettings": {
+    "title": "إعدادات التكامل",
+    "googleCalendar": "تقويم جوجل",
+    "slack": "سلاك",
+    "googlePlaceholder": "https://example.com",
+    "slackPlaceholder": "رابط ويب هوك",
+    "connectButton": "اتصل"
+  },
+  "LanguageSettingsClient": {
+    "title": "إعدادات اللغة والصوت",
+    "applicationLanguage": "لغة التطبيق",
+    "voiceAssistant": "المساعد الصوتي",
+    "defaultAIVoice": "الصوت الافتراضي للذكاء الاصطناعي",
+    "selectLanguage": "اختر لغتك",
+    "selectVoiceAssistant": "اختر المساعد الصوتي",
+    "selectAIVoice": "اختر صوت الذكاء الاصطناعي",
+    "maleVoice": "صوت ذكر",
+    "femaleVoice": "صوت أنثى",
+    "neutralVoice": "صوت محايد",
+    "natural": "طبيعي",
+    "professional": "احترافي",
+    "friendly": "ودود"
+  },
+  "NotificationsPreference": {
+    "title": "تفضيلات الإشعارات",
+    "emailNotifications": "إشعارات البريد الإلكتروني",
+    "planUsageAlert": "تنبيه استخدام الخطة",
+    "ticketEscalationAlert": "تنبيه تصعيد التذكرة",
+    "performanceReports": "تقارير الأداء"
+  },
+
+  "Profile": {
+    "Modal": {
+      "title": "الملف الشخصي للعميل",
+      "id": "رقم التعريف",
+      "companyInfo": "معلومات الشركة",
+      "companyName": "اسم الشركة",
+      "address": "العنوان",
+      "phone": "الهاتف",
+      "email": "البريد الإلكتروني",
+      "industry": "المجال الصناعي",
+      "companySize": "حجم الشركة",
+      "commercialRegister": "السجل التجاري",
+      "taxId": "الرقم الضريبي",
+      "website": "الموقع الإلكتروني",
+      "description": "الوصف",
+      "created": "تاريخ الإنشاء",
+      "updated": "تاريخ التحديث",
+      "closeProfile": "إغلاق الملف الشخصي"
+    },
+    "Error": {
+      "dir": "rtl",
+      "title": "الملف الشخصي غير متاح",
+      "description": "لا يمكننا تحميل معلومات ملفك الشخصي في الوقت الحالي.",
+      "possibleReasons": {
+        "title": "قد يكون هذا بسبب:",
+        "reason1": "لم يتم التحقق من هويتك بشكل صحيح",
+        "reason2": "هناك مشكلة في اتصال الشبكة",
+        "reason3": "الخوادم لدينا غير متوفرة مؤقتًا"
+      },
+      "close": "إغلاق",
+      "tryAgain": "حاول مرة أخرى"
+    }
+  },
+  "ThemeSettings": {
+    "title": "السمة",
+    "description": "اختر السمة المفضلة لديك",
+    "light": "فاتح",
+    "dark": "داكن",
+    "system": "النظام"
+  },
+  "SettingsClient": {
+    "accountSettings": "إعدادات الحساب",
+    "themeSettings": "إعدادات السمة",
+    "languageSettings": "إعدادات اللغة",
+    "integrationSettings": "إعدادات التكامل",
+    "notificationPreferences": "تفضيلات الإشعارات",
+    "saveChanges": "حفظ التغييرات",
+    "editProfile": "تعديل الملف الشخصي"
+  },
+  "DataTable": {
+    "columns": {
+      "header": "العنوان",
+      "type": "نوع القسم",
+      "status": "الحالة",
+      "target": "الهدف",
+      "limit": "الحد",
+      "reviewer": "المُراجع",
+      "actions": "الإجراءات",
+      "selectAll": "تحديد الكل",
+      "selectRow": "تحديد الصف",
+      "drag": "اسحب لإعادة الترتيب"
+    },
+    "tabs": {
+      "outline": "المخطط",
+      "pastPerformance": "الأداء السابق",
+      "keyPersonnel": "الأفراد الرئيسيون",
+      "focusDocuments": "الوثائق المركزة"
+    },
+    "pagination": {
+      "rowsPerPage": "صفوف لكل صفحة",
+      "pageOf": "الصفحة {current} من {total}",
+      "selectedCount": "{selected} من {total} صفوف محددة",
+      "firstPage": "الذهاب إلى الصفحة الأولى",
+      "previousPage": "الصفحة السابقة",
+      "nextPage": "الصفحة التالية",
+      "lastPage": "الذهاب إلى الصفحة الأخيرة"
+    },
+    "buttons": {
+      "customizeColumns": "تخصيص الأعمدة",
+      "addSection": "إضافة قسم",
+      "submit": "إرسال",
+      "done": "تم"
+    },
+    "dropdown": {
+      "edit": "تعديل",
+      "copy": "إنشاء نسخة",
+      "favorite": "المفضلة",
+      "delete": "حذف"
+    },
+    "status": {
+      "done": "مكتمل",
+      "inProgress": "قيد التنفيذ",
+      "notStarted": "لم يبدأ بعد"
+    },
+    "sectionTypes": {
+      "toc": "جدول المحتويات",
+      "executiveSummary": "ملخص تنفيذي",
+      "technicalApproach": "نهج فني",
+      "design": "تصميم",
+      "capabilities": "القدرات",
+      "focusDocuments": "وثائق مركزة",
+      "narrative": "رواية",
+      "coverPage": "صفحة الغلاف"
+    },
+    "drawer": {
+      "visitorsDescription": "عرض إجمالي الزوار خلال آخر 6 أشهر",
+      "trendingUp": "في ارتفاع بنسبة {percent} هذا الشهر",
+      "visitorsDetail": "عرض إجمالي الزوار خلال آخر 6 أشهر. هذا مجرد نص عشوائي لاختبار التنسيق. يجب أن يمتد على عدة أسطر ويتكيف مع المساحة."
+    }
+  },
+  "ClientsHeader": {
+    "title": "العملاء",
+    "buttons": {
+      "addClient": {
+        "label": "إضافة عميل",
+        "ariaLabel": "إضافة عميل جديد"
+      },
+      "search": "بحث"
+    },
+    "search": {
+      "placeholder": "ابحث عن العملاء بالاسم، البريد الإلكتروني أو القطاع",
+      "ariaLabel": "بحث العملاء",
+      "status": {
+        "searching": "جاري البحث...",
+        "resultsFound": "تم العثور على {count} عميل",
+        "noResults": "لا توجد عملاء تطابق بحثك"
+      }
+    },
+    "filter": {
+      "placeholder": "تصفية حسب الحالة",
+      "ariaLabel": "تصفية حسب الحالة",
+      "options": {
+        "all": "جميع الحالات",
+        "active": "نشط",
+        "inactive": "غير نشط",
+        "trial": "تجريبي"
+      }
+    },
+    "errors": {
+      "searchTooLong": "استعلام البحث طويل جداً"
+    }
+  },
+  "CreateNewClientModal": {
+    "title": "إنشاء عميل جديد",
+    "buttons": {
+      "cancel": "إلغاء",
+      "create": "إنشاء العميل"
+    },
+    "form": {
+      "name": {
+        "label": "اسم العميل",
+        "placeholder": "اسم الشركة"
+      },
+      "email": {
+        "label": "البريد الإلكتروني",
+        "placeholder": "contact@company.com"
+      },
+      "password": {
+        "label": "كلمة المرور",
+        "placeholder": "كلمة مرور الشركة"
+      },
+      "phone": {
+        "label": "رقم الهاتف",
+        "placeholder": "+1234567890"
+      },
+      "address": {
+        "label": "العنوان",
+        "placeholder": "123 شارع الأعمال، المدينة"
+      },
+      "website": {
+        "label": "الموقع الإلكتروني",
+        "placeholder": "https://company.com"
+      },
+      "industry": {
+        "label": "الصناعة",
+        "placeholder": "اختر الصناعة"
+      },
+      "plan": {
+        "label": "الخطة",
+        "placeholder": "اختر الخطة"
+      },
+      "size": {
+        "label": "حجم الشركة",
+        "placeholder": "اختر الحجم",
+        "options": {
+          "small": "صغيرة (1-50)",
+          "medium": "متوسطة (51-200)",
+          "large": "كبيرة (201-1000)",
+          "enterprise": "مؤسسة (1000+)"
+        }
+      },
+      "commercialRegister": {
+        "label": "السجل التجاري",
+        "placeholder": "CR-123456"
+      },
+      "taxId": {
+        "label": "الرقم الضريبي",
+        "placeholder": "TAX-123-456"
+      },
+      "description": {
+        "label": "الوصف",
+        "placeholder": "وصف موجز للعميل"
+      }
+    },
+    "industries": {
+      "technology": "التكنولوجيا",
+      "finance": "المالية",
+      "healthcare": "الرعاية الصحية",
+      "education": "التعليم",
+      "retail": "التجزئة",
+      "manufacturing": "التصنيع",
+      "hospitality": "الضيافة",
+      "other": "أخرى"
+    },
+    "errors": {
+      "required": "هذا الحقل مطلوب",
+      "invalidEmail": "يرجى إدخال بريد إلكتروني صالح",
+      "minLength": "يجب أن يكون على الأقل {min} أحرف",
+      "invalidUrl": "يرجى إدخال رابط صالح",
+      "invalidPhone": "يرجى إدخال رقم هاتف صالح"
+    }
+  },
+  "Analytics": {
+    "title": "التحليلات",
+    "datePicker": {
+      "label": "اختر التاريخ",
+      "today": "اليوم",
+      "thisWeek": "هذا الأسبوع",
+      "thisMonth": "هذا الشهر",
+      "customRange": "نطاق مخصص"
+    },
+    "Overview": {
+      "title": "نظرة عامة",
+      "changeFromLastPeriod": "من الفترة السابقة",
+      "metrics": {
+        "users": {
+          "title": "إجمالي المستخدمين"
+        },
+        "revenue": {
+          "title": "الإيرادات"
+        },
+        "sessions": {
+          "title": "الجلسات"
+        }
+      }
+    },
+    "CallsOverTime": {
+      "title": "المكالمات عبر الزمن",
+      "tooltipLabel": "مكالمات",
+      "days": {
+        "mon": "الإثنين",
+        "tue": "الثلاثاء",
+        "wed": "الأربعاء",
+        "thu": "الخميس",
+        "fri": "الجمعة",
+        "sat": "السبت",
+        "sun": "الأحد"
+      }
+    },
+    "TicketVolume": {
+      "title": "حجم التذاكر يومياً",
+      "tooltipLabel": "تذاكر",
+      "days": {
+        "mon": "الإثنين",
+        "tue": "الثلاثاء",
+        "wed": "الأربعاء",
+        "thu": "الخميس",
+        "fri": "الجمعة",
+        "sat": "السبت",
+        "sun": "الأحد"
+      }
+    },
+    "TopActiveClients": {
+      "title": "أفضل 5 عملاء نشطين",
+      "client": "العميل",
+      "calls": "المكالمات",
+      "clientName": "العميل {number}"
+    }
+  },
+  "UsersAndRoles": {
+    "title": "المستخدمون والأدوار",
+    "addUserButton": "إضافة مستخدم جديد",
+    "search": {
+      "placeholder": "ابحث عن المستخدمين بالاسم، البريد الإلكتروني أو الدور",
+      "button": "بحث"
+    }
+  },
+  "CreateUserModal": {
+    "title": "إنشاء مستخدم جديد",
+    "close": "إغلاق",
+    "showPassword": "إظهار كلمة المرور",
+    "hidePassword": "إخفاء كلمة المرور",
+    "form": {
+      "fullName": {
+        "label": "الاسم الكامل",
+        "placeholder": "اسمك الكامل"
+      },
+      "email": {
+        "label": "البريد الإلكتروني",
+        "placeholder": "example@email.com"
+      },
+      "role": {
+        "label": "الدور",
+        "placeholder": "اختر دورًا",
+        "options": {
+          "admin": "مدير",
+          "client": "عميل"
+        }
+      },
+      "password": {
+        "label": "كلمة المرور",
+        "placeholder": "أدخل كلمة المرور"
+      },
+      "submit": {
+        "create": "إنشاء مستخدم",
+        "creating": "جاري الإنشاء..."
+      }
+    }
+  },
+  "UsersTable": {
+    "columns": {
+      "user": "المستخدم",
+      "role": "الدور",
+      "status": "الحالة",
+      "lastActive": "آخر نشاط",
+      "actions": "الإجراءات"
+    },
+    "actions": {
+      "edit": "تعديل",
+      "resetPassword": "إعادة تعيين كلمة المرور",
+      "permissions": "الصلاحيات"
+    }
+  },
+  "Pagination": {
+    "previous": "الصفحة السابقة",
+    "next": "الصفحة التالية",
+    "pageNumber": "الصفحة {number}"
+  },
+  "Settings": {
+    "theme": {
+      "title": "المظهر",
+      "description": "اختر المظهر المفضل لديك"
+    }
+  },
+  "LanguageSettings": {
+    "title": "اختر لغتك",
+    "description": "اختر اللغة المفضلة لديك",
+    "systemLanguage": "لغة النظام الافتراضية",
+    "placeholder": "ما هي لغتك؟",
+    "languages": {
+      "arabic": "العربية",
+      "english": "الإنجليزية"
+    }
+  },
+  "CallsAndTickets": {
+    "title": "المكالمات والتذاكر",
+    "statusFilterPlaceholder": "تصفية حسب الحالة",
+    "statusFilterAll": "جميع الحالات",
+    "statusFilterCompleted": "مكتمل",
+    "statusFilterMissed": "فات",
+    "statusFilterScheduled": "مجدول",
+    "typeFilterPlaceholder": "تصفية حسب النوع",
+    "typeFilterAll": "جميع الأنواع",
+    "typeFilterInbound": "وارد",
+    "typeFilterOutbound": "صادر",
+    "filterButton": "تطبيق الفلاتر",
+    "customer": "العميل",
+    "phone": "الهاتف",
+    "duration": "المدة",
+    "scenario": "السيناريو",
+    "date": "التاريخ",
+    "status": "الحالة",
+    "type": "النوع",
+    "actions": "الإجراءات",
+    "view": "عرض",
+    "status": {
+      "completed": "مكتمل",
+      "missed": "فات",
+      "scheduled": "مجدول"
+    },
+    "type": {
+      "inbound": "وارد",
+      "outbound": "صادر"
+    }
+  },
+  "ScenarioPerformance": {
+    "title": "أداء السيناريو",
+    "viewAll": "عرض الكل",
+    "scenarioName": "اسم السيناريو",
+    "scenario": "السيناريو",
+    "calls": "المكالمات",
+    "avgDuration": "متوسط المدة",
+    "satisfaction": "الرضا"
+  },
+  "PreviousDays": {
+    "fromPreviousDays": "من الأيام السبعة الماضية",
+    "escalationText": "تصعيد إلى وكلاء بشريين",
+    "time": {
+      "8am": "8 ص",
+      "12pm": "12 م",
+      "2pm": "2 م",
+      "4pm": "4 م",
+      "6pm": "6 م"
+    }
+  },
+  "KeywordInsights": {
+    "title": "رؤى الكلمات الرئيسية",
+    "keywords": {
+      "appointment": "موعد",
+      "hours": "ساعات",
+      "price": "السعر",
+      "services": "خدمات",
+      "location": "موقع"
+    }
+  },
+  "IntentDetection": {
+    "title": "دقة اكتشاف النية",
+    "accuracy": "الدقة"
+  },
+  "DailyAiCalls": {
+    "title": "المكالمات اليومية للذكاء الاصطناعي"
+  },
+  "ConversionsRate": {
+    "title": "نظرة عامة على التحويلات",
+    "conversionRate": "معدل التحويل",
+    "missedIntents": "النوايا المفقودة للذكاء الاصطناعي"
+  },
+  "AnalystCard": {
+    "your_title_key": "عنوانك"
+  },
+  "PerformanceAnalyst": {
+    "totalCalls": "إ مجموع المكالمات",
+    "answeredCalls": "المكالمات التي تم الرد عليها",
+    "ticketsCreated": "التذاكر التي تم إنشاؤها",
+    "averageCallDuration": "متوسط مدة المكالمة",
+    "customerSatisfaction": "رضا العملاء",
+    "minutes": "دقيقة"
+  },
+  "AiOutboundCalls": {
+    "name": "الاسم",
+    "job": "المسمى الوظيفي",
+    "statusTitle": "الحالة",
+    "duration": "المدة",
+    "satisfaction": "الرضا",
+    "previous": "السابق",
+    "next": "التالي",
+    "showingResults": "عرض {from} إلى {to} من {total} نتيجة",
+    "minutesAbbr": "د",
+    "callName": "مكالمة #{number}",
+    "status": {
+      "completed": "مكتمل",
+      "in-progress": "قيد التنفيذ",
+      "failed": "فشل"
+    },
+    "jobTitles": {
+      "specialist": "أخصائي مراقبة الجودة",
+      "manager": "مدير العمليات",
+      "analyst": "محلل بيانات"
+    },
+    "header": {
+      "title": "المكالمات الصادرة بالذكاء الاصطناعي",
+      "subtitle": "تواصل مع عملائك تلقائيًا بمحادثات ذكية",
+      "addCallTask": "إضافة مهمة اتصال",
+      "importCSV": "استيراد CSV"
+    }
+  },
+
+  "UpgradePlan": {
+    "billing": {
+      "monthly": "شهري",
+      "yearly": "سنوي",
+      "save": "وفر"
+    },
+    "popular": "الأكثر شيوعًا",
+    "current": "خطة الحالية",
+    "currentButton": "الخطة الحالية",
+    "chooseButton": "اختر {plan}",
+    "plans": {
+      "free": {
+        "description": "الوصول إلى الميزات الأساسية مع استخدام محدود.",
+        "features": {
+          "current": "الخطة الحالية",
+          "conversions": "10 تحويلات",
+          "characters": "4000 حرف في كود الإدخال / تحويل",
+          "support": "دعم عبر البريد الإلكتروني"
+        }
+      },
+      "pro": {
+        "description": "فتح الأدوات المتقدمة لتعزيز الإنتاجية.",
+        "features": {
+          "billing": "شهريًا مدفوع شهريًا",
+          "conversions": "تحويلات غير محدودة",
+          "characters": "20,000 حرف في كود الإدخال / تحويل",
+          "support": "دعم أولوية عبر البريد الإلكتروني"
+        }
+      },
+      "premium": {
+        "description": "احصل على وصول كامل إلى جميع الميزات لأقصى مرونة.",
+        "features": {
+          "billing": "شهريًا مدفوع شهريًا",
+          "conversions": "تحويلات غير محدودة",
+          "characters": "50,000 حرف في كود الإدخال / تحويل",
+          "support": "دعم أولوية عبر البريد الإلكتروني"
+        }
+      }
+    },
+    "commonFeatures": {
+      "title": "جميع الخطط المميزة تشمل:",
+      "streamed": "تحويلات أسرع مع ردود متدفقة",
+      "generation": "أداة إنشاء الكود",
+      "explanation": "أداة شرح الكود",
+      "guarantee": "ضمان استرداد الأموال لمدة 14 يومًا",
+      "cancel": "إلغاء في أي وقت"
+    }
+  },
+  "Plans": {
+    "title": "الاشتراكات",
+    "description": "اختر الخطة المناسبة لاحتياجاتك",
+    "addNewPlan": "إضافة خطة جديدة",
+    "createPlanTitle": "إنشاء خطة جديدة",
+    "createPlanDescription": "املأ النموذج لإنشاء خطة اشتراك جديدة",
+    "planTitle": "عنوان الخطة",
+    "planTitlePlaceholder": "أدخل عنوان الخطة",
+    "size": "الحجم",
+    "sizePlaceholder": "أدخل الحجم",
+    "price": "السعر",
+    "interval": "فترة الفوترة",
+    "selectInterval": "اختر الفترة",
+    "description": "الوصف",
+    "descriptionPlaceholder": "أدخل وصف الخطة",
+    "features": "الميزات",
+    "feature": "ميزة",
+    "addFeaturePlaceholder": "إضافة ميزة جديدة",
+    "add": "إضافة",
+    "removeFeature": "إزالة الميزة",
+    "cancel": "إلغاء",
+    "createPlan": "إنشاء الخطة",
+    "popular": "الأكثر شيوعاً",
+    "/month": "/شهر",
+    "/year": "/سنة",
+    "titleRequired": "العنوان مطلوب",
+    "titleMinLength": "يجب أن يكون العنوان على الأقل حرفين",
+    "descriptionRequired": "الوصف مطلوب",
+    "descriptionMinLength": "يجب أن يكون الوصف على الأقل 10 أحرف",
+    "intervalRequired": "الفترة مطلوبة",
+    "intervalInvalid": "يجب أن تكون الفترة شهرية أو سنوية",
+    "priceRequired": "السعر مطلوب",
+    "pricePositive": "يجب أن يكون السعر موجباً",
+    "featureRequired": "الميزة مطلوبة",
+    "minFeaturesRequired": "مطلوب ميزة واحدة على الأقل",
+    "featuresRequired": "الميزات مطلوبة",
+    "createSuccess": "تم إنشاء الخطة بنجاح",
+    "createError": "فشل إنشاء الخطة",
+    "monthly": "شهري",
+    "yearly": "سنوي"
+  },
+  "Home": {
+    "dir": "rtl"
   }
 }
