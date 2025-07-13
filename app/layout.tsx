@@ -3,6 +3,7 @@ import { getMessages, getLocale } from "next-intl/server";
 import { Providers } from "@/providers/Providers";
 import "@/styles/globals.css";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import ClientProviderWrapper from "./ClientProviderWrapper";
 
 export const metadata: Metadata = {
   title: "starter-theme-nextjs",
@@ -20,10 +21,12 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body suppressHydrationWarning>
-        <Providers locale={locale} messages={messages}>
-          {children}
-          <LanguageSwitcher />
-        </Providers>
+        <ClientProviderWrapper>
+          <Providers locale={locale} messages={messages}>
+            {children}
+            <LanguageSwitcher />
+          </Providers>
+        </ClientProviderWrapper>
       </body>
     </html>
   );

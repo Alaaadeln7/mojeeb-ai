@@ -60,7 +60,7 @@ export default function LandingPageHeader() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
+          <Button
             className="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
@@ -70,7 +70,7 @@ export default function LandingPageHeader() {
             ) : (
               <Menu className="h-6 w-6" />
             )}
-          </button>
+          </Button>
         </nav>
 
         {/* Mobile Menu */}
@@ -107,7 +107,7 @@ export default function LandingPageHeader() {
                 >
                   <Button
                     asChild
-                    className="w-full bg-primary hover:bg-primary/90"
+                    className="w-full btn-primary hover:bg-primary/90"
                   >
                     <Link href="/auth/login">{t("getStarted")}</Link>
                   </Button>

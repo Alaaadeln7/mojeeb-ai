@@ -4,7 +4,7 @@ import LandingPageHeader from "@/components/molecules/LandingPageHeader";
 import Features from "@/components/molecules/Features";
 export default function HomePage() {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <LandingPageHeader />
       <Hero />
       <Features />
