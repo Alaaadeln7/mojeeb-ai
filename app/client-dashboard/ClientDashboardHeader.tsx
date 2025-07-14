@@ -1,6 +1,6 @@
 "use client";
 
-import { Bell, User, Moon, Sun, Languages } from "lucide-react";
+import { Bell, User, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -12,8 +12,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 interface ClientDashboardHeaderProps {
   isOpenProfile: boolean;
@@ -26,34 +26,13 @@ export default function ClientDashboardHeader({
 }: ClientDashboardHeaderProps) {
   const { setTheme } = useTheme();
   const t = useTranslations("Dashboard.Header");
-  const router = useRouter();
-  const handleLanguageChange = (newLocale: string) => {
-    router.push(`/${newLocale}/client-dashboard/settings`);
-  };
+
   return (
     <header className="flex items-center justify-between p-4 px-6 border-b">
       <SidebarTrigger />
 
       <div className="flex items-center gap-2">
-        {/* Language Switcher */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="sm" className="text-sm font-normal">
-              <Languages className="size-5" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem onClick={() => handleLanguageChange("en")}>
-              <span>🇬🇧</span>
-              English
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => handleLanguageChange("ar")}>
-              <span>🇸🇦</span>
-              العربية
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-
+        <LanguageSwitcher />
         {/* Notifications */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -68,7 +47,6 @@ export default function ClientDashboardHeader({
             <DropdownMenuItem>{t("noNotifications")}</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-
         {/* Theme Switcher */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -90,7 +68,6 @@ export default function ClientDashboardHeader({
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-
         {/* User Profile */}
         <Button
           variant="ghost"
