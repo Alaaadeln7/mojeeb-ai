@@ -65,7 +65,7 @@ export default function LandingPageHeader() {
 
           <div className="hidden md:block">
             {user ? (
-              <Button className="btn-primary">
+              <Button className="w-full btn-primary">
                 <Link href={handleRouteDashboard()}>{t("dashboard")}</Link>
               </Button>
             ) : (
@@ -125,7 +125,7 @@ export default function LandingPageHeader() {
                   transition={{ delay: 0.2 }}
                 >
                   {user ? (
-                    <Button className="btn-primary">
+                    <Button className="w-full btn-primary">
                       <Link href={handleRouteDashboard()}>
                         {t("dashboard")}
                       </Link>

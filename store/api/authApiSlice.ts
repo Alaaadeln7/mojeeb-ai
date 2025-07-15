@@ -65,6 +65,7 @@ export const authApiSlice = createApi({
         method: "GET",
       }),
       providesTags: ["Auth"],
+      keepUnusedDataFor: 0,
     }),
     logout: builder.mutation<{ message: string }, void>({
       query: () => ({

@@ -97,7 +97,9 @@ export function NavUser({
             <DropdownMenuSeparator />
             <DropdownMenuItem
               className="cursor-pointer"
-              onClick={() => logout()}
+              onClick={() => {
+                logout();
+              }}
             >
               <IconLogout />
               Log out

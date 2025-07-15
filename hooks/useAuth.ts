@@ -149,10 +149,9 @@ export default function useAuth() {
 
   const handleLogout = async (): Promise<void> => {
     await logout();
-    toast("Logged out successfully");
-    router.push("/");
+    toast.success("Logged out successfully");
+    window.location.href = "/";
   };
-
   const handlePageChange = (newPage: number): void => {
     setCurrentPage(newPage);
   };
