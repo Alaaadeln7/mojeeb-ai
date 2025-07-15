@@ -43,7 +43,14 @@ export default function useAuth() {
   const [createUser, { isLoading: isCreateUserLoading }] =
     useCreateUserMutation();
   const [login, { isLoading: isLoggingIn }] = useLoginMutation();
-  const { data: user, isLoading: isCheckingAuth } = useCheckAuthQuery();
+  const { data: user, isLoading: isCheckingAuth } = useCheckAuthQuery(
+    undefined,
+    {
+      refetchOnMountOrArgChange: true,
+      refetchOnFocus: true,
+      refetchOnReconnect: true,
+    }
+  );
   const [verifyOtp, { isLoading: verifyLoading }] = useVerifyOtpMutation();
   const [logout, { isLoading: logoutLoading }] = useLogoutMutation();
   const [forgetPassword, { isLoading: forgetPasswordLoading }] =
