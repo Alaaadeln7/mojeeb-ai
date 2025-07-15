@@ -148,9 +148,11 @@ export default function useAuth() {
   };
 
   const handleLogout = async (): Promise<void> => {
-    await logout();
+    const res = await logout();
     toast.success("Logged out successfully");
-    window.location.href = "/";
+    if (res) {
+      window.location.href = "/";
+    }
   };
   const handlePageChange = (newPage: number): void => {
     setCurrentPage(newPage);
