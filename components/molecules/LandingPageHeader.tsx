@@ -8,11 +8,21 @@ import LogoImage from "../../public/mojeb-ai-logo.png";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import useAuth from "@/hooks/useAuth";
 
 export default function LandingPageHeader() {
   const t = useTranslations("Header");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const { user } = useAuth();
+  console.log(user);
+  const handleRouteDashboard = () => {
+    if (user?.role === "admin") {
+      return "/admin-dashboard";
+    }
+    if (user?.role === "client") {
+      return "/client-dashboard";
+    }
+  };
   const navItems = [
     { name: t("home"), href: "/" },
     { name: t("features"), href: "/features" },
@@ -54,9 +64,18 @@ export default function LandingPageHeader() {
           </ul>
 
           <div className="hidden md:block">
-            <Button asChild className="bg-primary hover:bg-primary/90">
-              <Link href="/auth/login">{t("getStarted")}</Link>
-            </Button>
+            {user ? (
+              <Button className="btn-primary">
+                <Link href={handleRouteDashboard()}>{t("dashboard")}</Link>
+              </Button>
+            ) : (
+              <Button
+                asChild
+                className="w-full btn-primary hover:bg-primary/90"
+              >
+                <Link href="/auth/login">{t("getStarted")}</Link>
+              </Button>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -105,12 +124,20 @@ export default function LandingPageHeader() {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <Button
-                    asChild
-                    className="w-full btn-primary hover:bg-primary/90"
-                  >
-                    <Link href="/auth/login">{t("getStarted")}</Link>
-                  </Button>
+                  {user ? (
+                    <Button className="btn-primary">
+                      <Link href={handleRouteDashboard()}>
+                        {t("dashboard")}
+                      </Link>
+                    </Button>
+                  ) : (
+                    <Button
+                      asChild
+                      className="w-full btn-primary hover:bg-primary/90"
+                    >
+                      <Link href="/auth/login">{t("getStarted")}</Link>
+                    </Button>
+                  )}
                 </motion.li>
               </ul>
             </motion.div>
