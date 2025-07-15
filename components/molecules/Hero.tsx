@@ -6,7 +6,7 @@ export default function Hero() {
   const t = useTranslations("Hero");
 
   return (
-    <section className="relative w-full h-screen bg-teal-100">
+    <section className="relative w-full h-screen bg-[#000]">
       <div className="absolute inset-0 bg-[url('/landingPageImage.jpg')] bg-cover bg-center opacity-85"></div>
       <div className="relative z-10 max-w-7xl mx-auto h-full flex flex-col justify-center items-start text-center p-6">
         <h1 className="text-5xl text-start font-bold text-white mb-4">

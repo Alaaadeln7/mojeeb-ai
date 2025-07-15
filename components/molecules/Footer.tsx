@@ -34,6 +34,9 @@ export default function Footer() {
           <Link href="/contact" className="hover:text-white">
             {t("contact")}
           </Link>
+          <Link href="/privacy-policy" className="hover:text-white">
+            {t("privacyPolicy")}
+          </Link>
         </nav>
         <div className="text-center md:text-right">
           <p>{t("phone")}</p>

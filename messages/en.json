@@ -45,7 +45,15 @@
     "phone": "Phone: 0000000000",
     "email": "Email: info@example.com",
     "address": "Somewhere in the World",
-    "copyright": "© {year} All rights reserved"
+    "copyright": "© {year} All rights reserved",
+    "privacyPolicy": "privacy policy"
+  },
+  "targetedSectors": {
+    "title": "Targeted Sectors",
+    "educationInstitutes": "Educational Institutes",
+    "tourismHotels": "Tourism and Hotel Sector",
+    "hospitals": "Hospitals and Medical Centers",
+    "companies": "E-commerce and Service Companies"
   },
   "Login": {
     "title": "Login",

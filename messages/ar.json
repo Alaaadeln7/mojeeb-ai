@@ -74,7 +74,15 @@
     "phone": "رقم الهاتف: 0000000000",
     "email": "البريد الإلكتروني: info@example.com",
     "address": "مكان ما في العالم",
-    "copyright": "© {year} جميع الحقوق محفوظة"
+    "copyright": "© {year} جميع الحقوق محفوظة",
+    "privacyPolicy": "سياسه الخصوصيه"
+  },
+  "targetedSectors": {
+    "title": "القطاعات المستهدفة",
+    "educationInstitutes": "المعاهد التربية",
+    "tourismHotels": "المتشكلة السياحية والفندق",
+    "hospitals": "الجهات والمستشفيات",
+    "companies": "شركات التجارة الدكتورونية والخدمات"
   },
   "Login": {
     "title": "تسجيل الدخول",
