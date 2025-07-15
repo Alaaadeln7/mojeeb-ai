@@ -103,7 +103,7 @@ export default function useAuth() {
     try {
       await forgetPassword(credentials).unwrap();
       toast("OTP sent to your email");
-      router.push("/auth/reset-password");
+      router.push("/auth/verify-otp-password");
     } catch (error: unknown) {
       const apiError = error as ApiResponse;
       toast(
@@ -119,6 +119,7 @@ export default function useAuth() {
     try {
       await verifyOtpForgetPassword(credentials).unwrap();
       toast("Verification successful");
+      router.push("/auth/reset-password");
     } catch (error: unknown) {
       const apiError = error as ApiResponse;
       toast(

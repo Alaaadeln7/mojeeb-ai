@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { getMessages, getLocale } from "next-intl/server";
 import { Providers } from "@/providers/Providers";
 import "@/styles/globals.css";
-import LanguageSwitcher from "../components/LanguageSwitcher";
 import ClientProviderWrapper from "./ClientProviderWrapper";
 import { ThemeProvider } from "../components/molecules/theme-provider";
 import { Toaster } from "sonner";
@@ -34,7 +33,6 @@ export default async function RootLayout({
               {children}
               <Toaster />
               <Footer />
-              <LanguageSwitcher />
             </Providers>
           </ThemeProvider>
         </ClientProviderWrapper>

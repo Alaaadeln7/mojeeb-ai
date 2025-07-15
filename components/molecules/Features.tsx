@@ -45,7 +45,10 @@ export default function Features() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="bg-white p-6 flex items-center gap-3">
+            <div
+              key={index}
+              className="bg-background text-foreground p-6 flex items-center gap-3 rounded-xl"
+            >
               <Image
                 src={feature.icon}
                 alt={feature.description}

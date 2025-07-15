@@ -3,23 +3,23 @@
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useFormik } from "formik";
-import { ArrowLeft, Loader2, Mail } from "lucide-react";
+import { ArrowLeft, Loader2, LockKeyhole } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import useAuth from "@/hooks/useAuth";
-import { forgetPasswordValidation } from "../../../utils/validation/authValidation";
+import { verifyOtpPasswordValidation } from "../../../utils/validation/authValidation";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-// Define form values type
 interface FormValues {
-  email: string;
+  otp: string;
 }
 
-export default function ForgetPassword() {
-  const t = useTranslations("ForgetPassword");
-  const { forgetPassword, loading } = useAuth();
+export default function VerifyOtp() {
+  const t = useTranslations("VerifyOtp");
+  const { verifyOtpForgetPassword, loading } = useAuth();
   const { theme } = useTheme();
   const router = useRouter();
 
@@ -29,13 +29,16 @@ export default function ForgetPassword() {
 
   const formik = useFormik<FormValues>({
     initialValues: {
-      email: "",
+      otp: "",
     },
-    validationSchema: forgetPasswordValidation,
-    onSubmit: (values, { resetForm }) => {
-      console.log(values);
-      forgetPassword(values);
-      resetForm();
+    validationSchema: verifyOtpPasswordValidation,
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        await verifyOtpForgetPassword(values);
+        resetForm();
+      } catch (error) {
+        console.log(error);
+      }
     },
   });
 
@@ -58,36 +61,48 @@ export default function ForgetPassword() {
         <CardContent>
           <form onSubmit={formik.handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="email" className={`font-medium ${textColor}`}>
-                {t("email")}
+              <Label htmlFor="otp" className={`font-medium ${textColor}`}>
+                {t("otp")}
               </Label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <LockKeyhole className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
-                  id="email"
-                  type="email"
+                  id="otp"
+                  type="text"
+                  inputMode="numeric"
                   className={`pl-10 ${placeholderColor}`}
-                  placeholder={t("emailPlaceholder")}
-                  name="email"
+                  placeholder={t("otpPlaceholder")}
+                  name="otp"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  value={formik.values.email}
+                  value={formik.values.otp}
                 />
               </div>
-              {formik.errors.email && formik.touched.email && (
-                <p className="text-destructive text-sm">
-                  {formik.errors.email}
-                </p>
+              {formik.errors.otp && formik.touched.otp && (
+                <p className="text-destructive text-sm">{formik.errors.otp}</p>
               )}
             </div>
+
             <Button
               type="submit"
               className="w-full btn-primary"
               disabled={loading}
             >
-              {loading ? t("loading") : t("submit")}
-              {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              {loading ? (
+                <>
+                  {t("loading")}
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                </>
+              ) : (
+                t("submit")
+              )}
             </Button>
+
+            <div className="text-center text-sm">
+              <Link href="/auth/login" className="text-primary hover:underline">
+                {t("backToLogin")}
+              </Link>
+            </div>
           </form>
         </CardContent>
       </Card>

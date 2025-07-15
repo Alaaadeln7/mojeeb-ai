@@ -27,11 +27,11 @@ export const resetPasswordValidation = yup.object({
     .string()
     .min(8, "Password must be at least 8 characters")
     .required("Password is required"),
-  confirmPassword: yup
-    .string()
-    .min(8, "Password must be at least 8 characters")
-    .required("Confirm Password is required")
-    .oneOf([yup.ref("password")], "Passwords must match"),
+  // confirmPassword: yup
+  //   .string()
+  //   .min(8, "Password must be at least 8 characters")
+  //   .required("Confirm Password is required")
+  //   .oneOf([yup.ref("password")], "Passwords must match"),
 });
 
 export const createUserSchema = yup.object({
@@ -42,4 +42,12 @@ export const createUserSchema = yup.object({
     .required("Password is required")
     .min(6, "Password must be at least 6 characters long"),
   role: yup.string().required("Role is required"),
+});
+
+export const verifyOtpPasswordValidation = yup.object({
+  otp: yup
+    .string()
+    .required("otpRequired")
+    .length(6, "otpLength")
+    .matches(/^[0-9]+$/, "otpNumeric"),
 });

@@ -25,7 +25,7 @@ export default function LandingPageHeader() {
   };
 
   return (
-    <header className="w-full bg-white shadow-md sticky top-0 z-50">
+    <header className="w-full bg-background text-foreground shadow-md sticky top-0 z-50">
       <div className="container p-4">
         <nav className="flex justify-between items-center max-w-7xl mx-auto">
           <Link href="/" className="text-2xl font-bold text-teal-600">

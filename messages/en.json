@@ -129,6 +129,35 @@
       "logout": "Logout"
     }
   },
+  "VerifyOtp": {
+    "title": "Verify OTP",
+    "otp": "OTP Code",
+    "otpPlaceholder": "Enter 6-digit OTP",
+    "submit": "Verify OTP",
+    "loading": "Verifying...",
+    "backToLogin": "Back to Login",
+    "validation": {
+      "otpRequired": "OTP is required",
+      "otpLength": "OTP must be 6 digits",
+      "otpNumeric": "OTP must be numeric"
+    }
+  },
+  "ResetPassword": {
+    "title": "Reset Password",
+    "newPassword": "New Password",
+    "newPasswordPlaceholder": "Enter your new password",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Re-enter your new password",
+    "submit": "Reset Password",
+    "loading": "Processing...",
+    "backToLogin": "Back to Login",
+    "validation": {
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Password must be at least 8 characters",
+      "confirmPasswordRequired": "Please confirm your password",
+      "passwordsMustMatch": "Passwords must match"
+    }
+  },
   "UsageWarning": {
     "title": "Usage Warning",
     "upgradeButton": "Upgrade Plan"

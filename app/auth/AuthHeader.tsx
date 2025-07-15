@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import Link from "next/link";
 
 export default function AuthHeader() {
   const { setTheme } = useTheme();
@@ -20,7 +21,9 @@ export default function AuthHeader() {
   return (
     <header className="bg-background text-foreground shadow-md shadow-background">
       <div className="container mx-auto flex justify-between items-center">
-        <Image src={logoImage} alt={"logo"} className="w-14" />
+        <Link href={"/"}>
+          <Image src={logoImage} alt={"logo"} className="w-14" />
+        </Link>
         <div className="flex justify-center items-center gap-3">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

@@ -9,14 +9,14 @@ export default function HomePage() {
   const { user } = useAuth();
   const router = useRouter();
 
-  useEffect(() => {
-    if (user) {
-      const redirectPath = getRedirectPath(user?.role);
-      if (redirectPath !== window.location.pathname) {
-        router.push(redirectPath);
-      }
-    }
-  }, [user, router]);
+  // useEffect(() => {
+  //   if (user) {
+  //     const redirectPath = getRedirectPath(user?.role);
+  //     if (redirectPath !== window.location.pathname) {
+  //       router.push(redirectPath);
+  //     }
+  //   }
+  // }, [user, router]);
 
   const getRedirectPath = (role: string) => {
     switch (role) {
