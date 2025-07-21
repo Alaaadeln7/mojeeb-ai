@@ -50,10 +50,48 @@
   },
   "targetedSectors": {
     "title": "Targeted Sectors",
-    "educationInstitutes": "Educational Institutes",
-    "tourismHotels": "Tourism and Hotel Sector",
-    "hospitals": "Hospitals and Medical Centers",
-    "companies": "E-commerce and Service Companies"
+    "sectors": {
+      "1": {
+        "title": "Clinics and Hospitals",
+        "description": "Provide a professional patient experience by automatically responding to booking appointments and medical reminders, reducing pressure on administrative staff. Automatically confirm and schedule appointments and reduce cancellations thanks to automated reminders."
+      },
+      "2": {
+        "title": "Tourist facilities and hotels",
+        "description": "Manage customer calls about flights and reservations with a voice assistant. Respond to flight inquiries. • Confirm reservations and change appointments. • Providing promotions."
+      },
+      "3": {
+        "title": "E-commerce and services companies",
+        "description": "Providing quick responses to bank customers, including daily inquiries and alerts.• Respond to balance inquiries.• Remind customers of payment dates. • Transforming complex cases of human support. • Voice verification support."
+      },
+      "4": {
+        "title": "Training institutes",
+        "description": "Education platforms benefit from a smart assistant who manages inquiries, sends reminders, and relieves the burden on employees. This includes answering academic questions, confirming registration, and managing support tickets."
+      },
+      "5": {
+        "title": "Charities and organizations",
+        "description": "Providing immediate support to professional clients, without pressure on teams. Respond to registration and assistance terms. Automatically register orders and follow up. Support in both languages to expand service and reduce late calls."
+      }
+    }
+  },
+  "WhyMojeebSection": {
+    "title": "Why Mojeeb AI?",
+    "subtitle": "The assistant that handles receiving violations and delivering them to reminders or actions without human intervention.",
+    "monitoring": {
+      "title": "Continuous Monitoring and Improvement",
+      "description": "Periodic reports and quick challenges to evaluate the service and make rapid decisions."
+    },
+    "hours": {
+      "title": "Providing Working Hours",
+      "description": "Saves team time and reduces the number of repeated violations by a large percentage."
+    },
+    "readiness": {
+      "title": "Work Readiness",
+      "description": "With KJB activation, it starts serving operations without complex training or preparation."
+    },
+    "assistant": {
+      "title": "AI Assistant",
+      "description": "Handles receiving violations and delivering them to reminders or actions without human intervention."
+    }
   },
   "Login": {
     "title": "Login",
@@ -118,7 +156,8 @@
       "usersRoles": "Users & Roles",
       "subscriptions": "Subscriptions",
       "settings": "Settings",
-      "plans": "Plans"
+      "plans": "Plans",
+      "enrollmentForm": "enrollment forms"
     },
     "user": {
       "logout": "Log out"
@@ -862,6 +901,119 @@
     "createError": "Failed to create plan",
     "monthly": "Monthly",
     "yearly": "Yearly"
+  },
+  "EnrollmentInstructions": {
+    "title": "Enrollment Form Instructions",
+    "description": "Please carefully read the following conditions and tips before submitting your enrollment form.",
+    "requirementsTitle": "Mandatory Requirements",
+    "formCompleteTitle": "Complete All Fields",
+    "formCompleteDescription": "All form fields must be filled accurately and completely.",
+    "companyInfoTitle": "Company Information",
+    "companyInfoDescription": "Provide official company name as registered legally.",
+    "validWebsiteTitle": "Valid Website",
+    "validWebsiteDescription": "Must be a working website with your company's official domain.",
+    "addressTitle": "Business Address",
+    "addressDescription": "Provide complete physical business address (no P.O. boxes).",
+    "legalTitle": "Legal Documents",
+    "legalDescription": "Commercial register and tax ID must be valid and up-to-date.",
+    "tipsTitle": "Helpful Tips",
+    "contactInfoTitle": "Contact Information",
+    "contactInfoDescription": "Ensure your email and phone number are correct to receive status updates.",
+    "detailedDescriptionTitle": "Detailed Message",
+    "detailedDescriptionDescription": "Clearly explain your business needs and expectations.",
+    "verificationTitle": "Verification Process",
+    "verificationDescription": "Be prepared to provide additional documents if requested.",
+    "processingTimeTitle": "Processing Time",
+    "processingTimeDescription": "Typically takes 3-5 business days for review and approval.",
+    "contactTitle": "Contact Support",
+    "emailTitle": "Email Support",
+    "emailDescription": "support@example.com for any questions about the enrollment process.",
+    "phoneTitle": "Phone Support",
+    "phoneDescription": "+1234567890 (9AM-5PM, Sunday-Thursday)"
+  },
+  "EnrollmentForm": {
+    "title": "Company Enrollment form",
+    "submit": "Submit Application",
+    "dir": "ltr",
+    "loading": "Loading...",
+
+    "fields": {
+      "name": "Full Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "company": "Company Name",
+      "website": "Website",
+      "address": "Address",
+      "industry": "Industry",
+      "commercialRegister": "Commercial Register",
+      "taxId": "Tax ID",
+      "message": "Message"
+    },
+    "validation": {
+      "required": "This field is required",
+      "invalidEmail": "Invalid email address",
+      "invalidUrl": "Invalid website URL"
+    }
+  },
+  "Contacts": {
+    "name": "Name",
+    "email": "Email",
+    "company": "Company",
+    "industry": "Industry",
+    "createdAt": "Created At",
+    "status": "Status",
+    "actions": "Actions",
+    "edit": "Edit",
+    "approve": "Approve",
+    "reject": "Reject",
+    "delete": "Delete",
+    "status": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    }
+  },
+  "AdminHeader": {
+    "title": "Admin Dashboard",
+    "panelPosition": "Panel Position",
+    "positions": {
+      "top": "Top",
+      "bottom": "Bottom",
+      "right": "Right"
+    },
+    "account": {
+      "title": "My Account",
+      "profile": "Profile",
+      "settings": "Settings",
+      "logout": "Logout"
+    }
+  },
+  "DesktopTableViewEnrollmentForm": {
+    "actions": "Actions",
+    "title": "Enrollment Forms",
+    "desc": "Manage company enrollment applications and their status",
+    "searchPlaceholder": "Search by name, email, or company name",
+    "filter": "Filter",
+    "columns": {
+      "Name": "Name",
+      "Company": "Company",
+      "Email": "Email",
+      "Phone": "Phone",
+      "Industry": "Industry",
+      "Status": "Status",
+      "Submitted On": "Submitted On"
+    },
+    "status": {
+      "approved": "Approved",
+      "pending": "Pending",
+      "rejected": "Rejected"
+    },
+    "actionLabels": {
+      "View Details": "View Details",
+      "Approve": "Approve",
+      "Reject": "Reject",
+      "Delete": "Delete"
+    }
   },
   "Home": {
     "dir": "ltr"

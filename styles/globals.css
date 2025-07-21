@@ -153,3 +153,8 @@ body {
 .text-scoundry {
   color: #3d4d58;
 }
+
+::selection {
+  background-color: #10a5b1 !important;
+  color: #fff !important;
+}

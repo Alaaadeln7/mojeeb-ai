@@ -14,6 +14,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import {
+  BookOpen,
   ChartLine,
   Database,
   LayoutDashboard,
@@ -80,6 +81,11 @@ export default function AdminDashboardSidebar({ ...props }) {
       title: t("navItems.plans"),
       url: "/plans",
       icon: NotepadText,
+    },
+    {
+      title: t("navItems.enrollmentForm"),
+      url: "/enrollment-form",
+      icon: BookOpen,
     },
   ];
 

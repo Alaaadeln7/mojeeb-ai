@@ -58,7 +58,7 @@ export default function SettingsTheme() {
         </div>
 
         {/* Language Settings */}
-        <LangSettings />
+        {/* <LangSettings /> */}
 
         {/* Notifications */}
         <Notifications />

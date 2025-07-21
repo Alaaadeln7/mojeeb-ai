@@ -7,8 +7,9 @@ import { ThemeProvider } from "../components/molecules/theme-provider";
 import { Toaster } from "sonner";
 import Footer from "../components/molecules/Footer";
 export const metadata: Metadata = {
-  title: "starter-theme-nextjs",
-  description: "Order direct from Demo",
+  title: "Mojeeb AI",
+  description:
+    "Mojeeb ai Your first voice with the customer, and your unforgettable impression. He responds, understands, and serves , Before you don't respond",
 };
 
 export default async function RootLayout({

@@ -9,12 +9,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import useAuth from "@/hooks/useAuth";
+import LanguageSwitcher from "../LanguageSwitcher";
+import ThemeSwitcher from "../ThemeSwitcher";
 
 export default function LandingPageHeader() {
   const t = useTranslations("Header");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { user } = useAuth();
-  console.log(user);
   const handleRouteDashboard = () => {
     if (user?.role === "admin") {
       return "/admin-dashboard";
@@ -35,7 +36,7 @@ export default function LandingPageHeader() {
   };
 
   return (
-    <header className="w-full bg-background text-foreground shadow-md sticky top-0 z-50">
+    <header className="w-full dark:bg-gray-900 shadow-md sticky top-0 z-50">
       <div className="container p-4">
         <nav className="flex justify-between items-center max-w-7xl mx-auto">
           <Link href="/" className="text-2xl font-bold text-teal-600">
@@ -48,8 +49,6 @@ export default function LandingPageHeader() {
               priority
             />
           </Link>
-
-          {/* Desktop Navigation */}
           <ul className="hidden md:flex space-x-6">
             {navItems.map((item) => (
               <li key={item.href}>
@@ -63,24 +62,8 @@ export default function LandingPageHeader() {
             ))}
           </ul>
 
-          <div className="hidden md:block">
-            {user ? (
-              <Button className="w-full btn-primary">
-                <Link href={handleRouteDashboard()}>{t("dashboard")}</Link>
-              </Button>
-            ) : (
-              <Button
-                asChild
-                className="w-full btn-primary hover:bg-primary/90"
-              >
-                <Link href="/auth/login">{t("getStarted")}</Link>
-              </Button>
-            )}
-          </div>
-
-          {/* Mobile Menu Button */}
           <Button
-            className="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+            className="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary btn-primary"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
@@ -90,9 +73,33 @@ export default function LandingPageHeader() {
               <Menu className="h-6 w-6" />
             )}
           </Button>
+          <div className="flex justify-between gap-5">
+            <div className="hidden md:block">
+              {user ? (
+                <Button className="w-full btn-primary">
+                  <Link href={handleRouteDashboard()}>{t("dashboard")}</Link>
+                </Button>
+              ) : (
+                <Button
+                  asChild
+                  className="w-full btn-primary hover:bg-primary/90"
+                >
+                  <Link href="/auth/login">{t("getStarted")}</Link>
+                </Button>
+              )}
+            </div>
+            {!user && (
+              <Button className="btn-primary hidden md:block">
+                <Link href="/create-enrollment-form">
+                  Create Enrollment Form
+                </Link>
+              </Button>
+            )}
+            <ThemeSwitcher />
+            <LanguageSwitcher />
+          </div>
         </nav>
 
-        {/* Mobile Menu */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
@@ -138,6 +145,29 @@ export default function LandingPageHeader() {
                       <Link href="/auth/login">{t("getStarted")}</Link>
                     </Button>
                   )}
+                </motion.li>
+                <motion.li
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <Button
+                    asChild
+                    className="w-full btn-primary hover:bg-primary/90"
+                  >
+                    create Enrollment form
+                  </Button>
+                </motion.li>
+                <motion.li
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <Button className="btn-primary w-full">
+                    <Link href="/create-enrollment-form">
+                      Create Enrollment Form
+                    </Link>
+                  </Button>
                 </motion.li>
               </ul>
             </motion.div>

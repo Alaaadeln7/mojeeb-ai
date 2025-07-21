@@ -1,3 +1,12 @@
+// start get targetedSectorsData images
+import ecommerceImage from "@/public/targetedSectorsImages/ecommerce.png";
+import PromotingGenerosity from "@/public/targetedSectorsImages/PromotingGenerosity.png";
+import educationalVideo from "@/public/targetedSectorsImages/educationalVideo.png";
+import medical from "@/public/targetedSectorsImages/medicalApp.png";
+import streamlinedShipment from "@/public/targetedSectorsImages/streamlinedShipment.png";
+
+// end get targetedSectorsData images
+
 export const industryOptions = [
   "Information Technology",
   "Finance",
@@ -74,3 +83,43 @@ export const voices = {
   "en-PH": ["en-PH-Standard-A", "en-PH-Wavenet-A"],
   "en-IE": ["en-IE-Standard-A", "en-IE-Wavenet-A"],
 };
+
+export const targetedSectorsData = [
+  {
+    id: 1,
+    title: "Clinics and Hospitals",
+    description:
+      "Provide a professional patient experience by automatically responding to booking appointments and medical reminders, reducing pressure on administrative staff. Automatically confirm and schedule appointments and reduce cancellations thanks to automated reminders.",
+    icon: medical,
+  },
+  {
+    id: 2,
+    title: "Tourist facilities and hotels",
+    description:
+      "Manage customer calls about flights and reservations with a voice assistant. Respond to flight inquiries. • Confirm reservations and change appointments. • Providing promotions.",
+    icon: streamlinedShipment,
+  },
+  {
+    id: 3,
+    title: "E-commerce and services companies",
+    description: `
+      Providing quick responses to bank customers, including daily inquiries and alerts.• Respond to balance inquiries.• Remind customers of payment dates.
+• Transforming complex cases of human support.
+• Voice verification support.`,
+    icon: ecommerceImage,
+  },
+  {
+    id: 4,
+    title: "Training institutes",
+    description: `
+     Education platforms benefit from a smart assistant who manages inquiries, sends reminders, and relieves the burden on employees. This includes answering academic questions, confirming registration, and managing support tickets.`,
+    icon: educationalVideo,
+  },
+  {
+    id: 5,
+    title: "charities and organizations",
+    description:
+      "Providing immediate support to professional clients, without pressure on teams. Respond to registration and assistance terms. Automatically register orders and follow up. Support in both languages to expand service and reduce late calls.",
+    icon: PromotingGenerosity,
+  },
+];

@@ -1,11 +1,13 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import callIcon from "../../public/featuresImages/call.png";
 import aiNetwork from "../../public/featuresImages/ai-network.png";
 import settings from "../../public/featuresImages/settings.png";
 import bell from "../../public/featuresImages/bell.png";
 import translate from "../../public/featuresImages/translate.png";
 import analysis from "../../public/featuresImages/analysis.png";
+
 export default function Features() {
   const t = useTranslations("Features");
 
@@ -37,27 +39,65 @@ export default function Features() {
     },
   ];
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  const titleAnimation = {
+    hidden: { opacity: 0, x: -20 },
+    show: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+  };
+
   return (
-    <section className="w-full py-16 bg-teal-50">
+    <section className="w-full py-16 bg-teal-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-start text-[#10a5b1] mb-12">
+        <motion.h2
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={titleAnimation}
+          className="text-3xl font-bold text-start text-[#10a5b1] mb-12"
+        >
           {t("title")}
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        </motion.h2>
+
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={container}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        >
           {features.map((feature, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-background text-foreground p-6 flex items-center gap-3 rounded-xl"
+              variants={item}
+              whileHover={{ scale: 1.03 }}
+              className="dark:bg-gray-700 p-6 flex items-center gap-3 rounded-xl shadow-md hover:shadow-lg transition-shadow"
             >
-              <Image
-                src={feature.icon}
-                alt={feature.description}
-                className="w-5 h-5"
-              />
+              <motion.div whileHover={{ rotate: 10 }} whileTap={{ scale: 0.9 }}>
+                <Image
+                  src={feature.icon}
+                  alt={feature.description}
+                  className="w-5 h-5"
+                />
+              </motion.div>
               <p>{feature.description}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
