@@ -5,10 +5,13 @@ import {
   useDeleteEnrollmentFormMutation,
   useGetAllEnrollmentFormsQuery,
   useRejectedEnrollmentFormMutation,
+  useSearchEnrollmentFormsQuery,
 } from "@/store/api/enrollmentFormSlice";
 import { EnrollmentFormData } from "@/types/EnrollmentForm";
+import { useState } from "react";
 import { toast } from "sonner";
 export default function useEnrollmentForm() {
+  const [searchQuery, setSearchQuery] = useState("");
   const [createEnrollmentForm, { isLoading: createEnrollmentFormLoading }] =
     useCreateEnrollmentFormMutation();
   const { data: enrollmentForms, isLoading: enrollmentFormLoading } =
@@ -19,6 +22,12 @@ export default function useEnrollmentForm() {
     useRejectedEnrollmentFormMutation();
   const [deleteEnrollmentForm, { isLoading: deleteEnrollmentFormLoading }] =
     useDeleteEnrollmentFormMutation();
+  const {
+    data: searchEnrollmentForms,
+    isLoading: searchEnrollmentFormLoading,
+  } = useSearchEnrollmentFormsQuery(searchQuery, {
+    skip: !searchQuery,
+  });
   async function handleCreateEnrollmentForm(formData: EnrollmentFormData) {
     try {
       const res = await createEnrollmentForm(formData).unwrap();
@@ -63,10 +72,14 @@ export default function useEnrollmentForm() {
       console.error("Error deleting enrollment form:", error);
     }
   }
+  console.log(searchEnrollmentForms?.data);
   return {
     handleCreateEnrollmentForm,
     createEnrollmentFormLoading,
-    enrollmentForms: enrollmentForms?.data || [],
+    enrollmentForms:
+      searchQuery.length > 0
+        ? searchEnrollmentForms?.data
+        : enrollmentForms?.data || [],
     enrollmentFormLoading,
     acceptedEnrollmentFormLoading,
     rejectedEnrollmentFormLoading,
@@ -74,5 +87,8 @@ export default function useEnrollmentForm() {
     handleAcceptEnrollmentForm,
     handleRejectEnrollmentForm,
     handleDeleteEnrollmentForm,
+    searchLoading: searchEnrollmentFormLoading,
+    setSearchQuery,
+    searchQuery,
   };
 }

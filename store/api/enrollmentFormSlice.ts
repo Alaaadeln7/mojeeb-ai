@@ -48,6 +48,13 @@ export const enrollmentFormApiSlice = createApi({
       }),
       invalidatesTags: ["enrollmentForm"],
     }),
+    searchEnrollmentForms: builder.query({
+      query: (searchQuery) => ({
+        url: `/search?query=${searchQuery}`,
+        method: "GET",
+      }),
+      providesTags: ["enrollmentForm"],
+    }),
   }),
 });
 
@@ -57,4 +64,5 @@ export const {
   useAcceptedEnrollmentFormMutation,
   useRejectedEnrollmentFormMutation,
   useDeleteEnrollmentFormMutation,
+  useSearchEnrollmentFormsQuery,
 } = enrollmentFormApiSlice;

@@ -1039,7 +1039,11 @@
     "title": " استمارات التسجيل",
     "desc": "إدارة طلبات التسجيل في الشركة وحالتها",
     "searchPlaceholder": "بحث بالاسم، البريد الإلكتروني، اسم الشركة",
-    "filter": "تصفية",
+    "showFilter": "اظهار الفلاتر",
+    "hideFilter": "إخفاء الفلاتر",
+    "statusWord": "الحالة",
+    "all": "جميع الحالات",
+    "placeholder": "Filter by status",
     "columns": {
       "Name": "الاسم",
       "Company": "الشركة",

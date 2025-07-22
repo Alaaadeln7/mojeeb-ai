@@ -1,8 +1,4 @@
 "use client";
-
-import { Search, Filter, Eye, Trash2, UserRoundCheck, X } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 import MobileCardView from "@/components/pages/MobileCardView";
@@ -14,6 +10,8 @@ import { useState } from "react";
 import AcceptedEnrollmentFormDialog from "@/components/organisms/AcceptedEnrollmentFormDialog";
 import RejectedEnrollmentFormDialog from "@/components/organisms/RejectedEnrollmentFormDialog";
 import DeleteEnrollmentFormDialog from "@/components/organisms/DeleteEnrollmentFormDialog";
+import SearchAndFilterEnrollmentForm from "@/components/organisms/SearchAndFilterEnrollmentForm";
+import { Eye, Trash2, UserRoundCheck, X } from "lucide-react";
 
 const columns = [
   {
@@ -83,6 +81,9 @@ export default function EnrollmentFormsTable({ isRTL }) {
     handleAcceptEnrollmentForm,
     handleRejectEnrollmentForm,
     handleDeleteEnrollmentForm,
+    searchQuery,
+    setSearchQuery,
+    searchLoading,
   } = useEnrollmentForm();
   const t = useTranslations("DesktopTableViewEnrollmentForm");
   const [openDialog, setOpenDialog] = useState(false);
@@ -103,22 +104,12 @@ export default function EnrollmentFormsTable({ isRTL }) {
         </div>
 
         {/* Search and Filter */}
-        <div className="flex flex-col sm:flex-row gap-4">
-          <div className="relative flex-1">
-            <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder={t("searchPlaceholder")}
-              className="pr-10 h-12 border-0 shadow-md bg-card"
-            />
-          </div>
-          <Button
-            variant="outline"
-            className="h-12 px-6 border-0 shadow-md bg-card hover:bg-muted/50"
-          >
-            <Filter className="ml-2 h-4 w-4" />
-            {t("filter")}
-          </Button>
-        </div>
+        <SearchAndFilterEnrollmentForm
+          t={t}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          searchLoading={searchLoading}
+        />
         {/* Data Display - Mobile */}
         <div className="block md:hidden">
           <div className="space-y-4">

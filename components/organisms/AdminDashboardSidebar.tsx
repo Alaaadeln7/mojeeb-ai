@@ -3,11 +3,9 @@
 import * as React from "react";
 import { useLocale, useTranslations } from "next-intl";
 import NavMainAdminDashboard from "@/components/organisms/NavMainAdminDashboard";
-import { NavUser } from "@/components/organisms/nav-user";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -18,27 +16,18 @@ import {
   ChartLine,
   Database,
   LayoutDashboard,
-  // LogOut,
   NotepadText,
   Settings,
   User,
   Users,
-  // type LucideIcon,
 } from "lucide-react";
-
+import Link from "next/link";
 // Define interfaces for type safety
 import Icon from "@/components/organisms/NavMainAdminDashboard";
 interface NavItem {
   title: string;
   url: string;
   icon?: Icon;
-}
-
-interface UserData {
-  name: string;
-  email: string;
-  avatar: string;
-  logoutText: string;
 }
 
 export default function AdminDashboardSidebar({ ...props }) {
@@ -89,13 +78,6 @@ export default function AdminDashboardSidebar({ ...props }) {
     },
   ];
 
-  const userData: UserData = {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-    logoutText: t("user.logout"),
-  };
-
   return (
     <Sidebar collapsible="offcanvas" {...props} side={isRTL ? "right" : "left"}>
       <SidebarHeader>
@@ -105,11 +87,11 @@ export default function AdminDashboardSidebar({ ...props }) {
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
-              <a href="#">
+              <Link href="/">
                 <span className="text-base font-semibold">
                   {t("brandName")}
                 </span>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
@@ -117,9 +99,6 @@ export default function AdminDashboardSidebar({ ...props }) {
       <SidebarContent>
         <NavMainAdminDashboard items={navItems} />
       </SidebarContent>
-      <SidebarFooter>
-        <NavUser user={userData} />
-      </SidebarFooter>
     </Sidebar>
   );
 }

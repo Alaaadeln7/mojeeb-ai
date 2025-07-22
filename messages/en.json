@@ -981,7 +981,7 @@
     },
     "Status": {
       "pending": "Pending",
-      "approved": "Approved",
+      "accepted": "accepted",
       "rejected": "Rejected"
     },
     "fields": {
@@ -1040,7 +1040,11 @@
     "title": "Enrollment Forms",
     "desc": "Manage company enrollment applications and their status",
     "searchPlaceholder": "Search by name, email, or company name",
-    "filter": "Filter",
+    "showFilter": "show filters",
+    "hideFilter": "hide filters",
+    "statusWord": "Status",
+    "all": "All Statuses",
+    "placeholder": "Filter by status",
     "columns": {
       "Name": "Name",
       "Company": "Company",
