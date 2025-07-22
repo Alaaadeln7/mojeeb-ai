@@ -27,10 +27,34 @@ export const enrollmentFormApiSlice = createApi({
       }),
       providesTags: ["enrollmentForm"],
     }),
+    acceptedEnrollmentForm: builder.mutation({
+      query: ({ id }) => ({
+        url: `/accepted-status/${id}`,
+        method: "PUT",
+      }),
+      invalidatesTags: ["enrollmentForm"],
+    }),
+    rejectedEnrollmentForm: builder.mutation({
+      query: ({ id }) => ({
+        url: `/rejected-status/${id}`,
+        method: "PUT",
+      }),
+      invalidatesTags: ["enrollmentForm"],
+    }),
+    deleteEnrollmentForm: builder.mutation({
+      query: ({ id }) => ({
+        url: `/delete/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["enrollmentForm"],
+    }),
   }),
 });
 
 export const {
   useCreateEnrollmentFormMutation,
   useGetAllEnrollmentFormsQuery,
+  useAcceptedEnrollmentFormMutation,
+  useRejectedEnrollmentFormMutation,
+  useDeleteEnrollmentFormMutation,
 } = enrollmentFormApiSlice;

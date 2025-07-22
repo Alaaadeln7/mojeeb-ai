@@ -18,10 +18,14 @@ export default function MobileCardView({
   actions = [],
   loading,
   columns = [],
+  isRTL,
+  setOpenDialog,
+  setSelectItem,
+  setOpenAcceptedDialog,
+  setOpenRejectedDialog,
+  setOpenDeleteDialog,
 }) {
   const t = useTranslations("DesktopTableViewEnrollmentForm");
-  const direction = useTranslations()("direction");
-  const isRTL = direction === "rtl";
 
   if (loading) {
     return <EnrollmentFormCardSkeleton />;
@@ -34,11 +38,23 @@ export default function MobileCardView({
       </div>
     );
   }
-
+  const handleClick = (e, action, form) => {
+    e.preventDefault();
+    setSelectItem(form);
+    if (action.label === "View Details") {
+      setOpenDialog(true);
+    } else if (action.label === "Approve") {
+      setOpenAcceptedDialog(true);
+    } else if (action.label === "Reject") {
+      setOpenRejectedDialog(true);
+    } else if (action.label === "Delete") {
+      setOpenDeleteDialog(true);
+    }
+  };
   return (
     <div className="space-y-3">
-      {forms.map((form) => (
-        <Card key={form.id} className="p-3 mb-3 shadow-sm">
+      {forms?.map((form) => (
+        <Card key={form._id} className="p-3 mb-3 shadow-sm">
           <div className="space-y-2">
             {/* Header with name and status */}
             <div className="flex justify-between items-start gap-2">
@@ -47,7 +63,7 @@ export default function MobileCardView({
               </h3>
               <Badge
                 variant={
-                  form.status === "approved"
+                  form.status === "accepted"
                     ? "success"
                     : form.status === "rejected"
                     ? "destructive"
@@ -58,7 +74,7 @@ export default function MobileCardView({
                 className="font-medium flex items-center gap-1"
               >
                 {t(`status.${form.status}`)}
-                {form.status === "approved" && <Check className="size-3" />}
+                {form.status === "accepted" && <Check className="size-3" />}
                 {form.status === "pending" && (
                   <Loader className="size-3 animate-spin" />
                 )}
@@ -107,10 +123,7 @@ export default function MobileCardView({
                         className={`text-xs px-3 py-2 ${
                           action.destructive ? "text-red-600" : ""
                         }`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          action.onClick(form.id);
-                        }}
+                        onClick={(e) => handleClick(e, action, form)}
                       >
                         <action.icon className="mr-2 h-3.5 w-3.5" />
                         {t(`actionLabels.${action.label}`)}

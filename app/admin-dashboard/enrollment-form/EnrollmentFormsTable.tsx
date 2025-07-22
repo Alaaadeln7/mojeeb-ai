@@ -9,6 +9,11 @@ import MobileCardView from "@/components/pages/MobileCardView";
 import DesktopTableView from "@/components/pages/DesktopTableView";
 import useEnrollmentForm from "@/hooks/useEnrollmentForm";
 import { useTranslations } from "next-intl";
+import SingleEnrollmentFormDialog from "@/components/organisms/SingleEnrollmentFormDialog";
+import { useState } from "react";
+import AcceptedEnrollmentFormDialog from "@/components/organisms/AcceptedEnrollmentFormDialog";
+import RejectedEnrollmentFormDialog from "@/components/organisms/RejectedEnrollmentFormDialog";
+import DeleteEnrollmentFormDialog from "@/components/organisms/DeleteEnrollmentFormDialog";
 
 const columns = [
   {
@@ -68,58 +73,120 @@ const actions = [
   },
 ];
 
-export default function EnrollmentFormsTable() {
-  const { enrollmentForms, enrollmentFormLoading } = useEnrollmentForm();
+export default function EnrollmentFormsTable({ isRTL }) {
+  const {
+    enrollmentForms,
+    enrollmentFormLoading,
+    acceptedEnrollmentFormLoading,
+    rejectedEnrollmentFormLoading,
+    deleteEnrollmentFormLoading,
+    handleAcceptEnrollmentForm,
+    handleRejectEnrollmentForm,
+    handleDeleteEnrollmentForm,
+  } = useEnrollmentForm();
   const t = useTranslations("DesktopTableViewEnrollmentForm");
+  const [openDialog, setOpenDialog] = useState(false);
+  const [openAcceptedDialog, setOpenAcceptedDialog] = useState(false);
+  const [openRejectedDialog, setOpenRejectedDialog] = useState(false);
+  const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
+  const [selectItem, setSelectItem] = useState(null);
   return (
-    <div className="space-y-6 animate-fade-in">
-      <div>
-        <h2 className="sm:text-3xl text-xl font-bold tracking-tight bg-gradient-to-r from-primary to-[#10a5b1] bg-clip-text text-transparent">
-          {t("title")}
-        </h2>
-        <p className="text-muted-foreground sm:text-lg text-sm mt-2">
-          {t("desc")}
-        </p>
-      </div>
+    <>
+      <div className="space-y-6 animate-fade-in">
+        <div>
+          <h2 className="sm:text-3xl text-xl font-bold tracking-tight bg-gradient-to-r from-primary to-[#10a5b1] bg-clip-text text-transparent">
+            {t("title")}
+          </h2>
+          <p className="text-muted-foreground sm:text-lg text-sm mt-2">
+            {t("desc")}
+          </p>
+        </div>
 
-      {/* Search and Filter */}
-      <div className="flex flex-col sm:flex-row gap-4">
-        <div className="relative flex-1">
-          <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
-            placeholder={t("searchPlaceholder")}
-            className="pr-10 h-12 border-0 shadow-md bg-card"
-          />
+        {/* Search and Filter */}
+        <div className="flex flex-col sm:flex-row gap-4">
+          <div className="relative flex-1">
+            <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder={t("searchPlaceholder")}
+              className="pr-10 h-12 border-0 shadow-md bg-card"
+            />
+          </div>
+          <Button
+            variant="outline"
+            className="h-12 px-6 border-0 shadow-md bg-card hover:bg-muted/50"
+          >
+            <Filter className="ml-2 h-4 w-4" />
+            {t("filter")}
+          </Button>
         </div>
-        <Button
-          variant="outline"
-          className="h-12 px-6 border-0 shadow-md bg-card hover:bg-muted/50"
-        >
-          <Filter className="ml-2 h-4 w-4" />
-          {t("filter")}
-        </Button>
-      </div>
-      {/* Data Display - Mobile */}
-      <div className="block md:hidden">
-        <div className="space-y-4">
-          <MobileCardView
-            forms={enrollmentForms}
-            loading={enrollmentFormLoading}
-            actions={actions}
-            columns={columns}
-          />
+        {/* Data Display - Mobile */}
+        <div className="block md:hidden">
+          <div className="space-y-4">
+            <MobileCardView
+              forms={enrollmentForms}
+              loading={enrollmentFormLoading}
+              actions={actions}
+              columns={columns}
+              isRTL={isRTL}
+              setOpenDialog={setOpenDialog}
+              setSelectItem={setSelectItem}
+              setOpenAcceptedDialog={setOpenAcceptedDialog}
+              setOpenRejectedDialog={setOpenRejectedDialog}
+              setOpenDeleteDialog={setOpenDeleteDialog}
+            />
+          </div>
+        </div>
+        <div className="hidden md:block">
+          <Card className="border-0 shadow-lg">
+            <DesktopTableView
+              columns={columns}
+              actions={actions}
+              data={enrollmentForms}
+              loading={enrollmentFormLoading}
+              isRTL={isRTL}
+              setOpenDialog={setOpenDialog}
+              setSelectItem={setSelectItem}
+              setOpenAcceptedDialog={setOpenAcceptedDialog}
+              setOpenRejectedDialog={setOpenRejectedDialog}
+              setOpenDeleteDialog={setOpenDeleteDialog}
+            />
+          </Card>
         </div>
       </div>
-      <div className="hidden md:block">
-        <Card className="border-0 shadow-lg">
-          <DesktopTableView
-            columns={columns}
-            actions={actions}
-            data={enrollmentForms}
-            loading={enrollmentFormLoading}
-          />
-        </Card>
-      </div>
-    </div>
+      {openDialog && (
+        <SingleEnrollmentFormDialog
+          isOpen={openDialog}
+          onClose={() => setOpenDialog(false)}
+          item={selectItem}
+        />
+      )}
+      {openRejectedDialog && (
+        <RejectedEnrollmentFormDialog
+          isOpen={openRejectedDialog}
+          onClose={() => setOpenRejectedDialog(false)}
+          item={selectItem}
+          loading={rejectedEnrollmentFormLoading}
+          onConfirm={handleRejectEnrollmentForm}
+        />
+      )}
+      {openAcceptedDialog && (
+        <AcceptedEnrollmentFormDialog
+          isOpen={openAcceptedDialog}
+          onClose={() => setOpenAcceptedDialog(false)}
+          item={selectItem}
+          loading={acceptedEnrollmentFormLoading}
+          onConfirm={handleAcceptEnrollmentForm}
+        />
+      )}
+      {openDeleteDialog && (
+        <DeleteEnrollmentFormDialog
+          isOpen={openDeleteDialog}
+          onClose={() => setOpenDeleteDialog(false)}
+          item={selectItem}
+          onConfirm={handleDeleteEnrollmentForm}
+          loading={deleteEnrollmentFormLoading}
+        />
+      )}
+    </>
   );
 }

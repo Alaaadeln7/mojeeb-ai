@@ -935,6 +935,54 @@
     "submit": "إرسال الطلب",
     "dir": "rtl",
     "loading": "جاري التحميل...",
+    "Dialog": {
+      "title": "تفاصيل التسجيل",
+      "description": "عرض وإدارة معلومات التسجيل",
+      "applicantInfo": "معلومات مقدم الطلب",
+      "additionalInfo": "معلومات إضافية",
+      "name": "الاسم الكامل",
+      "email": "البريد الإلكتروني",
+      "createdAt": "تاريخ التقديم",
+      "updatedAt": "آخر تحديث",
+      "address": "عنوان العمل",
+      "phone": "رقم الهاتف",
+      "message": "الرسالة",
+      "company": "اسم الشركة",
+      "industry": "المجال الصناعي",
+      "commercialRegister": "السجل التجاري",
+      "taxId": "الرقم الضريبي",
+      "website": "الموقع الإلكتروني",
+      "close": "إغلاق",
+      "actions": {
+        "primary": "إرسال"
+      }
+    },
+    "RejectionDialog": {
+      "title": "تأكيد الرفض",
+      "message": "هل أنت متأكد أنك تريد رفض هذا التسجيل؟",
+      "cancel": "إلغاء",
+      "confirm": "رفض",
+      "loading": "جاري التحميل..."
+    },
+    "AcceptDialog": {
+      "title": "تأكيد القبول",
+      "message": "هل أنت متأكد أنك تريد قبول هذا التسجيل؟",
+      "cancel": "إلغاء",
+      "confirm": "قبول",
+      "loading": "جاري التحميل..."
+    },
+    "DeleteDialog": {
+      "title": "حذف التسجيل",
+      "description": "هل أنت متأكد أنك تريد حذف هذا التسجيل؟ لا يمكن التراجع عن هذا الإجراء.",
+      "cancel": "إلغاء",
+      "confirm": "حذف",
+      "loading": "جاري التحميل..."
+    },
+    "Status": {
+      "pending": "قيد الانتظار",
+      "approved": "موافق عليه",
+      "rejected": "مرفوض"
+    },
     "fields": {
       "name": "الاسم الكامل",
       "email": "البريد الإلكتروني",
@@ -1002,7 +1050,7 @@
       "Submitted On": "تاريخ التقديم"
     },
     "status": {
-      "approved": "مقبول",
+      "accepted": "مقبول",
       "pending": "قيد الانتظار",
       "rejected": "مرفوض"
     },

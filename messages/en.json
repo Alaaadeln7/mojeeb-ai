@@ -936,7 +936,54 @@
     "submit": "Submit Application",
     "dir": "ltr",
     "loading": "Loading...",
-
+    "Dialog": {
+      "title": "Enrollment Details",
+      "description": "View and manage enrollment information",
+      "applicantInfo": "Applicant Information",
+      "additionalInfo": "Additional Information",
+      "name": "Full Name",
+      "email": "Email Address",
+      "createdAt": "Submission Date",
+      "updatedAt": "Last Updated",
+      "address": "Business Address",
+      "phone": "Phone Number",
+      "message": "Message",
+      "website": "Website",
+      "company": "Company Name",
+      "industry": "Industry",
+      "commercialRegister": "Commercial Register",
+      "taxId": "Tax ID",
+      "close": "Close",
+      "actions": {
+        "primary": "Submit"
+      }
+    },
+    "RejectionDialog": {
+      "title": "Confirm Rejection",
+      "message": "Are you sure you want to reject this enrollment?",
+      "cancel": "Cancel",
+      "confirm": "Reject",
+      "loading": "Loading..."
+    },
+    "AcceptDialog": {
+      "title": "Confirm Acceptance",
+      "message": "Are you sure you want to accept this enrollment?",
+      "cancel": "Cancel",
+      "confirm": "Accept",
+      "loading": "Loading..."
+    },
+    "DeleteDialog": {
+      "title": "Delete Enrollment",
+      "description": "Are you sure you want to delete this enrollment? This action cannot be undone.",
+      "cancel": "Cancel",
+      "confirm": "Delete",
+      "loading": "Loading..."
+    },
+    "Status": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
     "fields": {
       "name": "Full Name",
       "email": "Email",
@@ -1004,7 +1051,7 @@
       "Submitted On": "Submitted On"
     },
     "status": {
-      "approved": "Approved",
+      "accepted": "accepted",
       "pending": "Pending",
       "rejected": "Rejected"
     },
