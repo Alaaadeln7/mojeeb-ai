@@ -1,11 +1,13 @@
 import LandingPageHeader from "@/components/molecules/LandingPageHeader";
-import TargetAudience from "../../components/organisms/TargetAudience";
+import PrivacyPolicyHero from "./PrivacyPolicyHero";
+import PrivacyPolicyContent from "./PrivacyPolicyContent";
 
 export default function PrivacyPolicy() {
   return (
     <section>
       <LandingPageHeader />
-      <TargetAudience />
+      <PrivacyPolicyHero />
+      <PrivacyPolicyContent />
     </section>
   );
 }

@@ -31,8 +31,8 @@ export default function Footer() {
           <Link href="/services" className="hover:text-white">
             {t("services")}
           </Link>
-          <Link href="/contact" className="hover:text-white">
-            {t("contact")}
+          <Link href="/terms-conditions" className="hover:text-white">
+            {t("termsConditions")}
           </Link>
           <Link href="/privacy-policy" className="hover:text-white">
             {t("privacyPolicy")}

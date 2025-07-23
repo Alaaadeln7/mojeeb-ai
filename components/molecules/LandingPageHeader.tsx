@@ -36,7 +36,7 @@ export default function LandingPageHeader() {
   };
 
   return (
-    <header className="w-full dark:bg-gray-900 shadow-md sticky top-0 z-50">
+    <header className="sticky top-0 z-50 backdrop-blur bg-white/70 border-b border-gray-200">
       <div className="container p-4">
         <nav className="flex justify-between items-center max-w-7xl mx-auto">
           <Link href="/" className="text-2xl font-bold text-teal-600">
@@ -91,7 +91,7 @@ export default function LandingPageHeader() {
             {!user && (
               <Button className="btn-primary hidden md:block">
                 <Link href="/create-enrollment-form">
-                  Create Enrollment Form
+                  {t("createEnrollmentForm")}
                 </Link>
               </Button>
             )}

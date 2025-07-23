@@ -85,13 +85,13 @@ export default function Features() {
               key={index}
               variants={item}
               whileHover={{ scale: 1.03 }}
-              className="dark:bg-gray-700 p-6 flex items-center gap-3 rounded-xl shadow-md hover:shadow-lg transition-shadow"
+              className="dark:bg-gray-700 bg-white p-6 flex items-center gap-3 rounded-xl shadow-md hover:shadow-lg transition-shadow"
             >
               <motion.div whileHover={{ rotate: 10 }} whileTap={{ scale: 0.9 }}>
                 <Image
                   src={feature.icon}
                   alt={feature.description}
-                  className="w-5 h-5"
+                  className="w-10 h-10"
                 />
               </motion.div>
               <p>{feature.description}</p>

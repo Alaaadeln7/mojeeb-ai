@@ -5,7 +5,8 @@
     "pricing": "Pricing",
     "contact": "Contact",
     "getStarted": "Get Started",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "createEnrollmentForm": "Create Enrollment Form"
   },
   "Hero": {
     "title": "Mojeeb ai Your first voice with the customer, and your unforgettable impression. He responds, understands, and serves...Before you don't respond",
@@ -46,7 +47,8 @@
     "email": "Email: info@example.com",
     "address": "Somewhere in the World",
     "copyright": "© {year} All rights reserved",
-    "privacyPolicy": "privacy policy"
+    "privacyPolicy": "privacy policy",
+    "termsConditions": "terms and conditions"
   },
   "targetedSectors": {
     "title": "Targeted Sectors",
@@ -1032,7 +1034,8 @@
       "title": "My Account",
       "profile": "Profile",
       "settings": "Settings",
-      "logout": "Logout"
+      "logout": "Logout",
+      "loading": "Logging out..."
     }
   },
   "DesktopTableViewEnrollmentForm": {
@@ -1064,6 +1067,130 @@
       "Approve": "Approve",
       "Reject": "Reject",
       "Delete": "Delete"
+    }
+  },
+  "PrivacyPolicy": {
+    "dataCollection": {
+      "title": "1. Data We Collect",
+      "description": "When you use \"Mujib AI\" services, we may collect the following types of data:",
+      "customerData": "a. Customer Data:",
+      "customerItems": {
+        "businessName": "Business name",
+        "commercialRegister": "Commercial register",
+        "taxNumber": "Tax number",
+        "contactInfo": "Contact information (email, mobile number)",
+        "billingData": "Billing and subscription data"
+      },
+      "userData": "b. End User Data:",
+      "userItems": {
+        "callRecordings": "Call recordings (when recording feature is enabled)",
+        "conversationTexts": "Texts generated from voice conversations",
+        "callDetails": "Call time and date, call duration, interaction type, mobile number"
+      }
+    },
+    "dataUsage": {
+      "title": "2. How We Use Data",
+      "description": "We use the data we collect to:",
+      "items": {
+        "1": "Provide and customize the smart response experience",
+        "2": "Improve service quality and voice responses",
+        "3": "Create reports and analytics for the customer",
+        "4": "Send account or system-related alerts or updates"
+      }
+    },
+    "dataStorage": {
+      "title": "3. Data Storage",
+      "items": {
+        "1": "Data is stored on secure cloud servers",
+        "2": "Recordings and texts are kept for a limited period according to the package or customer request",
+        "3": "We conduct periodic data reviews to ensure security and avoid retaining unnecessary data"
+      }
+    },
+    "dataSharing": {
+      "title": "4. Data Sharing",
+      "description": "We do not share your data or your customers' data with any third party except in the following cases:",
+      "items": {
+        "1": "When there is explicit permission from the customer",
+        "2": "To comply with Saudi Arabia's regulations and legislation",
+        "3": "When using external service providers, and only to serve the performance of the service"
+      }
+    },
+    "dataProtection": {
+      "title": "5. Data Protection",
+      "description": "We use high security standards to protect your data, including:",
+      "items": {
+        "1": "Data encryption during transmission and storage",
+        "2": "Protection systems against unauthorized access",
+        "3": "Periodic review of vulnerabilities and security improvements"
+      }
+    },
+    "customerRights": {
+      "title": "6. Customer Rights",
+      "description": "The customer has the right to:",
+      "items": {
+        "1": "Request a copy of their data",
+        "2": "Modify or delete data upon request (according to regulations)",
+        "3": "Stop the service and withdraw data within a specific period"
+      }
+    },
+    "policyChanges": {
+      "title": "7. Privacy Policy Modifications",
+      "description": "We may update this policy from time to time, and you will be notified via email or through the control panel when any substantial changes occur."
+    },
+    "contactUs": {
+      "title": "8. Contact Us",
+      "description": "For any inquiries regarding privacy or data protection, please contact us"
+    }
+  },
+  "TermsConditions": {
+    "title": "Terms and Conditions for Using \"Mujib AI\" Service",
+    "lastUpdated": "Last updated: 2025-05-01",
+    "intro": "Please read these Terms and Conditions carefully before using the \"Mujib AI\" service. By using or subscribing to the service, you agree to comply with these terms.",
+    "definitions": {
+      "title": "1. Definitions",
+      "service": "Service",
+      "serviceDefinition": "Refers to the Mujib AI platform, which provides smart voice response solutions, conversation analysis, and automatic ticket generation.",
+      "customer": "Customer",
+      "customerDefinition": "Any entity or individual who subscribes to the service for a fee.",
+      "user": "User",
+      "userDefinition": "Any person authorized by the customer to use the service."
+    },
+    "serviceScope": {
+      "title": "2. Service Scope",
+      "description1": "The service provides smart voice response to customer calls according to customized scenarios determined by the customer.",
+      "description2": "The service includes the ability to automatically send tickets, record and analyze calls, and integrate with external services according to the package."
+    },
+    "intellectualProperty": {
+      "title": "3. Intellectual Property",
+      "description": "All intellectual property rights in \"Mujib AI\" including design, source code, user interfaces, and generated content are fully owned by Mujib AI Company."
+    },
+    "serviceUsage": {
+      "title": "4. Service Usage",
+      "description1": "The customer agrees not to use the service for any illegal activity or activity that violates norms.",
+      "description2": "\"Mujib AI\" reserves the right to temporarily or permanently suspend the service in case of misuse or violation of terms."
+    },
+    "privacyData": {
+      "title": "5. Privacy and Data",
+      "description1": "All voice data and personal information are handled with complete confidentiality.",
+      "description2": "Calls may be stored for documentation and analysis purposes, and will not be shared with external parties without the customer's prior consent."
+    },
+    "subscriptionsPayment": {
+      "title": "6. Subscriptions and Payment",
+      "description1": "Service prices vary by package and include a specified number of usage minutes per month.",
+      "description2": "Additional fees are calculated when exceeding the monthly limit according to the announced pricing.",
+      "description3": "Non-payment may lead to service suspension."
+    },
+    "disclaimer": {
+      "title": "7. Disclaimer",
+      "description": "The customer is responsible for updating scenarios and reviewing response content."
+    },
+    "modifications": {
+      "title": "8. Modifications",
+      "description": "\"Mujib AI\" reserves the right to modify the Terms and Conditions at any time. Customers will be notified of modifications via email or within the control panel, and continued use of the service constitutes acceptance."
+    },
+    "governingLaw": {
+      "title": "9. Governing Law",
+      "description": "These terms are subject to the regulations of the Kingdom of Saudi Arabia, and any dispute shall be resolved by the competent judicial authorities in the city of Riyadh."
     }
   },
   "Home": {

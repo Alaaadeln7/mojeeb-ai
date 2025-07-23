@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Globe } from "lucide-react";
+import { Languages } from "lucide-react";
 
 export default function LanguageSwitcher() {
   const router = useRouter();
@@ -35,7 +35,7 @@ export default function LanguageSwitcher() {
           size="icon"
           className="rounded-full border shadow"
         >
-          <Globe className="h-5 w-5" />
+          <Languages className="size-5" />
           <span className="sr-only">Toggle language</span>
         </Button>
       </DropdownMenuTrigger>

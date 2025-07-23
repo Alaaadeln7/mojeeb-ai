@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Bell, User } from "lucide-react";
+import { Bell, Loader2, LogOut, User } from "lucide-react";
 import * as React from "react";
 import {
   DropdownMenu,
@@ -19,11 +19,12 @@ import { Badge } from "@/components/ui/badge";
 import { useTranslations } from "next-intl";
 import ThemeSwitcher from "../ThemeSwitcher";
 import LanguageSwitcher from "../LanguageSwitcher";
+import useAuth from "@/hooks/useAuth";
 
 export default function AdminSiteHeader() {
   const [position, setPosition] = useState("bottom");
   const t = useTranslations("AdminHeader");
-
+  const { loading, logout } = useAuth();
   return (
     <header className="flex h-fit py-2 shrink-0 items-center gap-2 border-b bg-background px-4 text-foreground transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-[--header-height]">
       <div className="flex w-full items-center justify-between">
@@ -87,8 +88,24 @@ export default function AdminSiteHeader() {
               <DropdownMenuItem>{t("account.profile")}</DropdownMenuItem>
               <DropdownMenuItem>{t("account.settings")}</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-red-600 focus:text-red-600">
-                {t("account.logout")}
+              <DropdownMenuItem
+                onClick={() => {
+                  logout();
+                }}
+                disabled={loading}
+                className="text-red-600 focus:text-red-600 cursor-pointer hover:bg-red-200"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="mr-2 size-5 animate-spin" />
+                    {t("account.loading")}
+                  </>
+                ) : (
+                  <>
+                    <LogOut className="mr-2 size-5" />
+                    {t("account.logout")}
+                  </>
+                )}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
