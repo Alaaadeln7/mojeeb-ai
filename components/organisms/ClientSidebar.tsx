@@ -87,13 +87,6 @@ export default function ClientSidebar({ ...props }) {
     },
   ];
 
-  const userData: UserData = {
-    name: fullName,
-    email: email,
-    avatar: "",
-    logoutText: t("user.logout"),
-  };
-
   return (
     <Sidebar collapsible="offcanvas" {...props} side={isRTL ? "right" : "left"}>
       <SidebarHeader>
@@ -120,9 +113,6 @@ export default function ClientSidebar({ ...props }) {
       <SidebarContent>
         <NavMainClientDashboard items={navItems} />
       </SidebarContent>
-      <SidebarFooter>
-        <NavUser user={userData} />
-      </SidebarFooter>
     </Sidebar>
   );
 }

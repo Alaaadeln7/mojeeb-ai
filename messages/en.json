@@ -235,13 +235,20 @@
   "Dashboard": {
     "Header": {
       "language": "Language",
-      "notifications": "Notifications",
-      "noNotifications": "No new notifications",
       "toggleTheme": "Toggle theme",
       "light": "Light",
       "dark": "Dark",
       "system": "System",
-      "userProfile": "User profile"
+      "userProfile": "User profile",
+      "logout": "Log out",
+      "loading": "Logging out...",
+      "notifications": {
+        "title": "Notifications",
+        "markAllRead": "Mark all as read",
+        "clearAll": "Clear all notifications",
+        "empty": "No new notifications",
+        "viewAll": "View all notifications"
+      }
     }
   },
   "VoiceScript": {
@@ -1036,6 +1043,13 @@
       "settings": "Settings",
       "logout": "Logout",
       "loading": "Logging out..."
+    },
+    "notifications": {
+      "title": "Notifications",
+      "markAllRead": "Mark all as read",
+      "empty": "No new notifications",
+      "viewAll": "View All",
+      "clearAll": "Clear All"
     }
   },
   "DesktopTableViewEnrollmentForm": {

@@ -1,19 +1,23 @@
 "use client";
 
-import { Bell, User, Moon, Sun } from "lucide-react";
+import { Loader2, LogOut, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { useTheme } from "next-themes";
+
 import { useTranslations } from "next-intl";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import NotificationsMenu from "@/components/organisms/NotificationsMenu";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
+import {
+  DropdownMenu,
+  DropdownMenuSeparator,
+} from "@radix-ui/react-dropdown-menu";
+import {
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import useAuth from "@/hooks/useAuth";
 
 interface ClientDashboardHeaderProps {
   isOpenProfile: boolean;
@@ -24,61 +28,48 @@ export default function ClientDashboardHeader({
   isOpenProfile,
   setIsOpenProfile,
 }: ClientDashboardHeaderProps) {
-  const { setTheme } = useTheme();
   const t = useTranslations("Dashboard.Header");
-
+  const { logout, loading: authLoading } = useAuth();
   return (
     <header className="flex items-center justify-between p-4 px-6 border-b">
       <SidebarTrigger />
 
       <div className="flex items-center gap-2">
         <LanguageSwitcher />
-        {/* Notifications */}
+        <ThemeSwitcher />
+        <NotificationsMenu t={t} />
+
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+          <DropdownMenuTrigger>
             <Button variant="ghost" size="icon" className="rounded-full">
-              <Bell className="size-5" />
-              <span className="sr-only">{t("notifications")}</span>
+              <User className="size-5" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-64" align="end">
-            <DropdownMenuLabel>{t("notifications")}</DropdownMenuLabel>
+          <DropdownMenuContent>
+            <DropdownMenuItem onClick={() => setIsOpenProfile(!isOpenProfile)}>
+              {t("userProfile")}
+              <User className="size-5" />
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>{t("noNotifications")}</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-        {/* Theme Switcher */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="rounded-full">
-              <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">{t("toggleTheme")}</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem onClick={() => setTheme("light")}>
-              {t("light")}
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setTheme("dark")}>
-              {t("dark")}
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setTheme("system")}>
-              {t("system")}
+            <DropdownMenuItem
+              onClick={logout}
+              disabled={authLoading}
+              className="text-destructive focus:text-destructive cursor-pointer focus:bg-destructive/10"
+            >
+              {authLoading ? (
+                <>
+                  <Loader2 className="mr-2 size-4 animate-spin" />
+                  {t("loading")}
+                </>
+              ) : (
+                <>
+                  <LogOut className="mr-2 size-4" />
+                  {t("logout")}
+                </>
+              )}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-        {/* User Profile */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="rounded-full"
-          onClick={() => setIsOpenProfile(!isOpenProfile)}
-          title={t("userProfile")}
-        >
-          <User className="size-5" />
-          <span className="sr-only">{t("userProfile")}</span>
-        </Button>
       </div>
     </header>
   );

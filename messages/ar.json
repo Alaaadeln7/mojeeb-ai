@@ -236,13 +236,21 @@
   "Dashboard": {
     "Header": {
       "language": "اللغة",
-      "notifications": "الإشعارات",
-      "noNotifications": "لا توجد إشعارات جديدة",
       "toggleTheme": "تبديل السمة",
       "light": "فاتح",
       "dark": "داكن",
       "system": "النظام",
-      "userProfile": "ملف المستخدم"
+      "userProfile": "ملف المستخدم",
+      "logout": "تسجيل الخروج",
+      "loading": "جاري تسجيل الخروج...",
+      "notifications": {
+        "title": "الإشعارات",
+        "userProfile": "ملف المستخدم",
+        "markAllRead": "تحديث كل الاشعارات كمقروءة",
+        "clearAll": "حذف كل الاشعارات",
+        "empty": "لا توجد اشعارات جديدة",
+        "viewAll": "عرض كل الاشعارات"
+      }
     }
   },
   "VoiceScript": {
@@ -1024,17 +1032,20 @@
   "AdminHeader": {
     "title": "لوحة التحكم الإدارية",
     "panelPosition": "موقع اللوحة",
-    "positions": {
-      "top": "أعلى",
-      "bottom": "أسفل",
-      "right": "يمين"
-    },
+
     "account": {
       "title": "حسابي",
       "profile": "الملف الشخصي",
       "settings": "الإعدادات",
       "logout": "تسجيل الخروج",
       "loading": "جاري الخروج..."
+    },
+    "notifications": {
+      "title": "الاشعارات",
+      "markAllRead": "تحديد الكل كمقروء",
+      "empty": "لا توجد إشعارات جديدة",
+      "viewAll": "عرض الكل",
+      "clearAll": "حذف الكل"
     }
   },
   "DesktopTableViewEnrollmentForm": {

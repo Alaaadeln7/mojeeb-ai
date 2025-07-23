@@ -2,107 +2,97 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Bell, Loader2, LogOut, User } from "lucide-react";
+import { Loader2, LogOut, User, Settings } from "lucide-react";
 import * as React from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useState } from "react";
-import { Badge } from "@/components/ui/badge";
+
 import { useTranslations } from "next-intl";
 import ThemeSwitcher from "../ThemeSwitcher";
 import LanguageSwitcher from "../LanguageSwitcher";
 import useAuth from "@/hooks/useAuth";
+import Link from "next/link";
+import NotificationsMenu from "./NotificationsMenu";
 
 export default function AdminSiteHeader() {
-  const [position, setPosition] = useState("bottom");
   const t = useTranslations("AdminHeader");
-  const { loading, logout } = useAuth();
+  const { loading: authLoading, logout } = useAuth();
+
+  const { user } = useAuth();
+
   return (
-    <header className="flex h-fit py-2 shrink-0 items-center gap-2 border-b bg-background px-4 text-foreground transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-[--header-height]">
+    <header className="sticky top-0 z-40 flex h-16 shrink-0 items-center border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4">
       <div className="flex w-full items-center justify-between">
-        <div className="flex items-center">
-          <SidebarTrigger className="-ml-1" />
-          <Separator
-            orientation="vertical"
-            className="mx-2 h-4 data-[orientation=vertical]:h-4"
-          />
+        <div className="flex items-center gap-4">
+          <SidebarTrigger className="rounded-md p-2 hover:bg-accent hover:text-accent-foreground transition-colors" />
+          <Separator orientation="vertical" className="h-6" />
         </div>
 
-        <div className="flex items-center gap-3">
-          <LanguageSwitcher />
+        <div className="flex items-center gap-2">
           <ThemeSwitcher />
+          <LanguageSwitcher />
+          <NotificationsMenu t={t} />
+          {/* User Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
-                variant="outline"
+                variant="ghost"
                 size="icon"
-                className="relative rounded-full hover:bg-yellow-50/50 hover:text-yellow-600 transition-colors"
-              >
-                <Bell className="size-5" />
-                <Badge className="absolute -right-1 -top-1 h-5 min-w-5 rounded-full px-1 font-mono text-xs bg-yellow-500 hover:bg-yellow-600 text-white border-yellow-600">
-                  99
-                </Badge>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56" align="end">
-              <DropdownMenuLabel>{t("panelPosition")}</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuRadioGroup
-                value={position}
-                onValueChange={setPosition}
-              >
-                <DropdownMenuRadioItem value="top">
-                  {t("positions.top")}
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="bottom">
-                  {t("positions.bottom")}
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="right">
-                  {t("positions.right")}
-                </DropdownMenuRadioItem>
-              </DropdownMenuRadioGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="outline"
-                size="icon"
-                className="rounded-full hover:bg-blue-50/50 hover:text-blue-600 transition-colors"
+                className="rounded-full hover:bg-accent"
               >
                 <User className="size-5" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-48" align="end">
-              <DropdownMenuLabel>{t("account.title")}</DropdownMenuLabel>
+            <DropdownMenuContent className="w-56" align="end">
+              <DropdownMenuLabel className="font-normal">
+                <div className="flex flex-col space-y-1">
+                  <p className="text-sm font-medium leading-none">
+                    {user?.fullName}
+                  </p>
+                  <p className="text-xs leading-none text-muted-foreground">
+                    {user?.email}
+                  </p>
+                </div>
+              </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>{t("account.profile")}</DropdownMenuItem>
-              <DropdownMenuItem>{t("account.settings")}</DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link
+                  href="/admin-dashboard/profile"
+                  className="w-full cursor-pointer"
+                >
+                  <User className="mr-2 size-4" />
+                  {t("account.profile")}
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link
+                  href="/admin-dashboard/settings"
+                  className="w-full cursor-pointer"
+                >
+                  <Settings className="mr-2 size-4" />
+                  {t("account.settings")}
+                </Link>
+              </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem
-                onClick={() => {
-                  logout();
-                }}
-                disabled={loading}
-                className="text-red-600 focus:text-red-600 cursor-pointer hover:bg-red-200"
+                onClick={logout}
+                disabled={authLoading}
+                className="text-destructive focus:text-destructive cursor-pointer focus:bg-destructive/10"
               >
-                {loading ? (
+                {authLoading ? (
                   <>
-                    <Loader2 className="mr-2 size-5 animate-spin" />
+                    <Loader2 className="mr-2 size-4 animate-spin" />
                     {t("account.loading")}
                   </>
                 ) : (
                   <>
-                    <LogOut className="mr-2 size-5" />
+                    <LogOut className="mr-2 size-4" />
                     {t("account.logout")}
                   </>
                 )}

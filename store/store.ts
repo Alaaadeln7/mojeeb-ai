@@ -4,6 +4,7 @@ import { clientApiSlice } from "./api/clientApiSlice";
 import { plansApiSlice } from "./api/plansApiSlice";
 import { chatbotApiSlice } from "./api/chatbotApiSlice";
 import { enrollmentFormApiSlice } from "./api/enrollmentFormSlice";
+import { notificationApiSlice } from "./api/notificationApiSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     [plansApiSlice.reducerPath]: plansApiSlice.reducer,
     [chatbotApiSlice.reducerPath]: chatbotApiSlice.reducer,
     [enrollmentFormApiSlice.reducerPath]: enrollmentFormApiSlice.reducer,
+    [notificationApiSlice.reducerPath]: notificationApiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
@@ -19,7 +21,8 @@ const store = configureStore({
       clientApiSlice.middleware,
       plansApiSlice.middleware,
       chatbotApiSlice.middleware,
-      enrollmentFormApiSlice.middleware
+      enrollmentFormApiSlice.middleware,
+      notificationApiSlice.middleware
     ),
   devTools: process.env.NODE_ENV !== "production",
 });

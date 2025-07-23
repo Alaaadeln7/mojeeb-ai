@@ -1,10 +1,10 @@
 import React, { ReactNode } from "react";
-import AuthHeader from "./AuthHeader";
+import LandingPageHeader from "@/components/molecules/LandingPageHeader";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <div className="min-h-screen flex flex-col">
-      <AuthHeader />
+      <LandingPageHeader />
       <main>{children}</main>
     </div>
   );

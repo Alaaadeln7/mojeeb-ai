@@ -22,12 +22,12 @@ import {
   Users,
 } from "lucide-react";
 import Link from "next/link";
-// Define interfaces for type safety
-import Icon from "@/components/organisms/NavMainAdminDashboard";
+import Image from "next/image";
+import logoImage from "@/public/mojeb-ai-logo.png";
 interface NavItem {
   title: string;
   url: string;
-  icon?: Icon;
+  icon?: React.ComponentType<{ className?: string }>;
 }
 
 export default function AdminDashboardSidebar({ ...props }) {
@@ -79,24 +79,23 @@ export default function AdminDashboardSidebar({ ...props }) {
   ];
 
   return (
-    <Sidebar collapsible="offcanvas" {...props} side={isRTL ? "right" : "left"}>
-      <SidebarHeader>
+    <Sidebar
+      collapsible="offcanvas"
+      {...props}
+      side={isRTL ? "right" : "left"}
+      className="border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900"
+    >
+      <SidebarHeader className="px-4 py-4 border-b border-gray-200 dark:border-gray-700">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton
-              asChild
-              className="data-[slot=sidebar-menu-button]:!p-1.5"
-            >
-              <Link href="/">
-                <span className="text-base font-semibold">
-                  {t("brandName")}
-                </span>
-              </Link>
-            </SidebarMenuButton>
+            <Link href="/">
+              <Image src={logoImage} alt="Mojeeb AI" className="w-15" />
+            </Link>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>
+
+      <SidebarContent className="p-4">
         <NavMainAdminDashboard items={navItems} />
       </SidebarContent>
     </Sidebar>

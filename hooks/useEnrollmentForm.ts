@@ -15,7 +15,7 @@ export default function useEnrollmentForm() {
   const [createEnrollmentForm, { isLoading: createEnrollmentFormLoading }] =
     useCreateEnrollmentFormMutation();
   const { data: enrollmentForms, isLoading: enrollmentFormLoading } =
-    useGetAllEnrollmentFormsQuery();
+    useGetAllEnrollmentFormsQuery(undefined);
   const [acceptedEnrollmentForm, { isLoading: acceptedEnrollmentFormLoading }] =
     useAcceptedEnrollmentFormMutation();
   const [rejectedEnrollmentForm, { isLoading: rejectedEnrollmentFormLoading }] =

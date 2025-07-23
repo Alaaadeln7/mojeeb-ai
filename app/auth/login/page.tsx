@@ -70,7 +70,7 @@ export default function Login() {
             <div className="space-y-2">
               <Label htmlFor="email">{t("email")}</Label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <div className="absolute inset-y-0 right-0 px-3 flex items-center pointer-events-none">
                   <Mail className="h-5 w-5 text-muted-foreground" />
                 </div>
                 <Input
@@ -81,7 +81,7 @@ export default function Login() {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   placeholder={t("emailPlaceholder")}
-                  className={`pl-10 ${
+                  className={`px-10 ${
                     formik.touched.email && formik.errors.email
                       ? "border-destructive"
                       : ""
@@ -97,7 +97,7 @@ export default function Login() {
             <div className="space-y-2">
               <Label htmlFor="password">{t("password")}</Label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <div className="absolute inset-y-0 right-0 px-3 flex items-center pointer-events-none">
                   <Lock className="h-5 w-5 text-muted-foreground" />
                 </div>
                 <Input
@@ -108,7 +108,7 @@ export default function Login() {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   placeholder={t("passwordPlaceholder")}
-                  className={`pl-10 ${
+                  className={`px-10 ${
                     formik.touched.password && formik.errors.password
                       ? "border-destructive"
                       : ""
@@ -118,7 +118,7 @@ export default function Login() {
                   type="button"
                   variant="ghost"
                   size="icon"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  className="absolute inset-y-0 left-0 px-3 flex items-center"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
