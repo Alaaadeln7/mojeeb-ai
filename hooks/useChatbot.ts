@@ -5,6 +5,7 @@ import {
   useGetChatbotQuery,
   useUpdateInquiryMutation,
   useDeleteInquiryMutation,
+  useSpeakMutation,
 } from "@/store/api/chatbotApiSlice";
 import { showToast, toast } from "@/components/ui/sonner";
 import useClient from "./useClient";
@@ -62,6 +63,7 @@ export default function useChatbot() {
   const [deleteInquiry, { isLoading: deleteInquiryLoading }] =
     useDeleteInquiryMutation();
 
+  const [speak, { isLoading: speakLoading }] = useSpeakMutation();
   // Chatbot operations
   const handleUpdateChatbot = async (
     id: string,
@@ -121,9 +123,9 @@ export default function useChatbot() {
   ): Promise<Inquiry> => {
     try {
       const response = await updateInquiry(inquiryData).unwrap();
-      notifySuccess("Inquiry updated");
+      showToast("Inquiry updated", "success");
       return response.data;
-    } catch (error: unknown) {
+    } catch (error) {
       return handleError(
         error as { data?: { message?: string } },
         "update inquiry"
@@ -134,15 +136,25 @@ export default function useChatbot() {
   const handleDeleteInquiry = async (
     data: DeleteInquiryParams
   ): Promise<void> => {
+    console.log(data);
     try {
       const res = await deleteInquiry(data).unwrap();
-      if (res.data) notifySuccess("Inquiry deleted");
+      if (res) showToast("Inquiry deleted", "success");
     } catch (error: unknown) {
       handleError(error as { data?: { message?: string } }, "delete inquiry");
     }
   };
+
+  const handleSpeak = async (body) => {
+    try {
+      await speak(body);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return {
     chatbot: chatbot?.data?.data || [],
+    chatbotId: currentClient?.chatbotId || "",
     totalPages: chatbot?.data?.totalPages,
     total: chatbot?.data?.total,
     hasNextPage: chatbot?.data?.hasNextPage,
@@ -162,5 +174,7 @@ export default function useChatbot() {
     currentPage,
     handleLimitChange,
     currentLimit,
+    speakLoading,
+    handleSpeak,
   };
 }

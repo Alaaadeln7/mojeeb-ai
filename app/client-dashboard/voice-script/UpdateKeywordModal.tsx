@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useFormik } from "formik";
 import useChatbot from "@/hooks/useChatbot";
 import { useTranslations } from "next-intl";
@@ -12,6 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogDescription,
+  DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -44,6 +45,7 @@ export default function UpdateKeywordModal({
       keyword: selectInquiry?.keyword || "",
     },
     validationSchema: VALIDATION_UPDATE_KEYWORD_SCHEMA,
+    enableReinitialize: true,
     onSubmit: async (values, { resetForm, setSubmitting }) => {
       try {
         if (!selectInquiry?._id) return;
@@ -67,104 +69,101 @@ export default function UpdateKeywordModal({
 
   return (
     <Dialog open={openUpdateKeyword} onOpenChange={setOpenUpdateKeyword}>
-      <AnimatePresence>
-        {openUpdateKeyword && (
-          <DialogContent
-            asChild
-            className="sm:max-w-[625px] max-h-[90vh] overflow-y-auto"
-            forceMount
-          >
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.2 }}
-              data-theme={theme}
-            >
-              <DialogHeader>
-                <DialogTitle>{t("updateTitle")}</DialogTitle>
-                <DialogDescription>{t("updateDescription")}</DialogDescription>
-              </DialogHeader>
+      <DialogContent className="sm:max-w-[625px] max-h-[90vh] overflow-y-auto">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.2 }}
+          data-theme={theme}
+        >
+          <DialogHeader>
+            <DialogTitle>{t("updateTitle")}</DialogTitle>
+            <DialogDescription>{t("updateDescription")}</DialogDescription>
+          </DialogHeader>
 
-              <form onSubmit={formik.handleSubmit} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="question">{t("questionLabel")}</Label>
-                  <Textarea
-                    id="question"
-                    name="question"
-                    value={formik.values.question}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    placeholder={t("questionPlaceholder")}
-                    className="min-h-[100px]"
-                  />
-                  {formik.touched.question && formik.errors.question && (
-                    <p className="text-sm text-destructive">
-                      {formik.errors.question}
-                    </p>
-                  )}
-                </div>
+          <form onSubmit={formik.handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="question">{t("questionLabel")}</Label>
+              <Textarea
+                id="question"
+                name="question"
+                value={formik.values.question}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder={t("questionPlaceholder")}
+                className="min-h-[100px]"
+              />
+              {formik.touched.question && formik.errors.question && (
+                <p className="text-sm text-destructive">
+                  {formik.errors.question}
+                </p>
+              )}
+            </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="answer">{t("answerLabel")}</Label>
-                  <Textarea
-                    id="answer"
-                    name="answer"
-                    value={formik.values.answer}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    placeholder={t("answerPlaceholder")}
-                    className="min-h-[100px]"
-                  />
-                  {formik.touched.answer && formik.errors.answer && (
-                    <p className="text-sm text-destructive">
-                      {formik.errors.answer}
-                    </p>
-                  )}
-                </div>
+            <div className="space-y-2">
+              <Label htmlFor="answer">{t("answerLabel")}</Label>
+              <Textarea
+                id="answer"
+                name="answer"
+                value={formik.values.answer}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder={t("answerPlaceholder")}
+                className="min-h-[100px]"
+              />
+              {formik.touched.answer && formik.errors.answer && (
+                <p className="text-sm text-destructive">
+                  {formik.errors.answer}
+                </p>
+              )}
+            </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="keyword">{t("keywordLabel")}</Label>
-                  <Input
-                    id="keyword"
-                    name="keyword"
-                    value={formik.values.keyword}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    placeholder={t("keywordPlaceholder")}
-                  />
-                  {formik.touched.keyword && formik.errors.keyword && (
-                    <p className="text-sm text-destructive">
-                      {formik.errors.keyword}
-                    </p>
-                  )}
-                </div>
+            <div className="space-y-2">
+              <Label htmlFor="keyword">{t("keywordLabel")}</Label>
+              <Input
+                id="keyword"
+                name="keyword"
+                value={formik.values.keyword}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder={t("keywordPlaceholder")}
+              />
+              {formik.touched.keyword && formik.errors.keyword && (
+                <p className="text-sm text-destructive">
+                  {formik.errors.keyword}
+                </p>
+              )}
+            </div>
 
-                <div className="flex justify-end gap-2 pt-4">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => setOpenUpdateKeyword(false)}
-                    disabled={formik.isSubmitting}
-                  >
-                    {t("cancelButton")}
-                  </Button>
-                  <Button type="submit" disabled={formik.isSubmitting}>
-                    {updateInquiryLoading ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        {t("updatingButton")}
-                      </>
-                    ) : (
-                      t("updateButton")
-                    )}
-                  </Button>
-                </div>
-              </form>
-            </motion.div>
-          </DialogContent>
-        )}
-      </AnimatePresence>
+            <DialogFooter>
+              <Button
+                type="button"
+                variant="destructive"
+                onClick={() => setOpenUpdateKeyword(false)}
+                disabled={formik.isSubmitting}
+                className="rounded-3xl"
+              >
+                {t("cancelButton")}
+              </Button>
+              <Button
+                type="submit"
+                className="colored-btn"
+                disabled={formik.isSubmitting}
+              >
+                {updateInquiryLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    {t("updatingButton")}
+                  </>
+                ) : (
+                  t("updateButton")
+                )}
+              </Button>
+            </DialogFooter>
+          </form>
+        </motion.div>
+      </DialogContent>
     </Dialog>
   );
 }

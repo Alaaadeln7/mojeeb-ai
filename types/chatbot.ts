@@ -57,7 +57,7 @@ export interface AddInquiryParams {
 }
 
 export interface UpdateInquiryParams {
-  id: string;
+  inquiryId: string;
   question?: string;
   answer?: string;
   keyword?: string;
@@ -89,6 +89,7 @@ export interface MainConversationScriptProps {
   handleLimitChange: (newLimit: number) => void;
   hasPreviousPage: boolean;
   hasNextPage: boolean;
+  setOpenConfirmDelete: (open: boolean) => void;
 }
 
 export interface ConversationScriptPaginationProps {

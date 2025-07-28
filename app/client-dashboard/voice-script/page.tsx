@@ -8,8 +8,6 @@ import MainConversationScript from "./MainConversationScript";
 import VoiceScriptHeader from "./VoiceScriptHeader";
 import useChatbot from "@/hooks/useChatbot";
 import UpdateKeywordModal from "./UpdateKeywordModal";
-import useClient from "@/hooks/useClient";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Inquiry } from "@/types/chatbot";
 
 export default function VoiceScript() {
@@ -30,9 +28,9 @@ export default function VoiceScript() {
     handleLimitChange,
     hasPreviousPage,
     hasNextPage,
-  } = useChatbot();
 
-  const { currentClient } = useClient();
+    chatbotId,
+  } = useChatbot();
 
   return (
     <>
@@ -72,7 +70,7 @@ export default function VoiceScript() {
       <UpdateKeywordModal
         setOpenUpdateKeyword={setOpenUpdateKeyword}
         openUpdateKeyword={openUpdateKeyword}
-        chatbotId={currentClient?.chatbotId ?? ""}
+        chatbotId={chatbotId ?? ""}
         selectInquiry={selectInquiry}
       />
     </>

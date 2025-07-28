@@ -6,16 +6,15 @@ interface ChatbotData {
 }
 
 interface InquiryData {
-  // Define the structure of inquiry data
   id?: string;
   question: string;
   answer: string;
-  // Add other inquiry fields as needed
+  keyword?: string;
+  chatbotId: string;
 }
 
 interface SpeakData {
   text: string;
-  // Add other speak fields as needed
 }
 
 export const chatbotApiSlice = createApi({
@@ -28,64 +27,85 @@ export const chatbotApiSlice = createApi({
     }/chatbot`,
     credentials: "include",
   }),
-  tagTypes: ["Chatbot"],
+  tagTypes: ["Chatbot", "Inquiry"],
   endpoints: (builder) => ({
-    getChatbot: builder.query({
-      query: ({ chatbotId, page, limit }) => ({
-        url: `/${chatbotId}?page=${page}&limit=${limit}`,
-        method: "GET",
-        providesTags: ["Chatbot"],
-      }),
+    getChatbot: builder.query<
+      ChatbotData,
+      { chatbotId: string; page?: number; limit?: number }
+    >({
+      query: ({ chatbotId, page = 1, limit = 10 }) =>
+        `/${chatbotId}?page=${page}&limit=${limit}`,
+      providesTags: (result, error, arg) => [
+        { type: "Chatbot", id: arg.chatbotId },
+      ],
     }),
+
     updateChatbot: builder.mutation<
       ChatbotData,
       { id: string; [key: string]: string }
     >({
-      query: ({ id, ...chatbotData }) => ({
+      query: ({ id, ...data }) => ({
         url: `/${id}`,
         method: "PUT",
-        body: chatbotData,
-      }),
-      invalidatesTags: ["Chatbot"],
-    }),
-    deleteChatbot: builder.mutation<{ message: string }, { id: string }>({
-      query: (data) => ({
-        url: "/delete",
-        method: "DELETE",
         body: data,
       }),
-      invalidatesTags: ["Chatbot"],
+      invalidatesTags: (result, error, { id }) => [{ type: "Chatbot", id }],
     }),
+
+    deleteChatbot: builder.mutation<{ message: string }, { id: string }>({
+      query: ({ id }) => ({
+        url: "/delete",
+        method: "DELETE",
+        body: { id },
+      }),
+      invalidatesTags: (result, error, { id }) => [{ type: "Chatbot", id }],
+    }),
+
     addInquiry: builder.mutation<
       { message: string; inquiry: InquiryData },
       InquiryData
     >({
-      query: (inquiryData) => ({
-        url: `/create`,
+      query: (body) => ({
+        url: "/create",
         method: "POST",
-        body: inquiryData,
+        body,
       }),
-      invalidatesTags: ["Chatbot"],
+      invalidatesTags: (result, error, { chatbotId }) => [
+        { type: "Chatbot", id: chatbotId },
+        { type: "Inquiry", id: "LIST" },
+      ],
     }),
+
     updateInquiry: builder.mutation<
       { message: string; inquiry: InquiryData },
       InquiryData
     >({
-      query: (inquiryData) => ({
-        url: `/update`,
+      query: (body) => ({
+        url: "/update",
         method: "PUT",
-        body: inquiryData,
+        body,
       }),
-      invalidatesTags: ["Chatbot"],
+      invalidatesTags: (result, error, { chatbotId }) => [
+        { type: "Chatbot", id: chatbotId },
+        { type: "Inquiry", id: "LIST" },
+      ],
     }),
-    deleteInquiry: builder.mutation<{ message: string }, { id: string }>({
-      query: (data) => ({
-        url: `/delete`,
+
+    deleteInquiry: builder.mutation<
+      { message: string },
+      { inquiryId: string; chatbotId: string }
+    >({
+      query: (body) => ({
+        url: "/delete",
         method: "DELETE",
-        body: data,
+        body,
       }),
-      invalidatesTags: ["Chatbot"],
+      invalidatesTags: (result, error, { chatbotId }) => [
+        { type: "Chatbot", id: chatbotId },
+        { type: "Inquiry", id: "LIST" },
+      ],
     }),
+
     speak: builder.mutation<Blob, SpeakData>({
       query: (body) => ({
         url: "/speak",
@@ -105,7 +125,7 @@ export const {
   useUpdateChatbotMutation,
   useDeleteChatbotMutation,
   useAddInquiryMutation,
-  useSpeakMutation,
   useUpdateInquiryMutation,
   useDeleteInquiryMutation,
+  useSpeakMutation,
 } = chatbotApiSlice;

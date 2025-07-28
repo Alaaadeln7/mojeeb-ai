@@ -13,6 +13,7 @@ import {
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { Inquiry } from "@/types/chatbot";
+import { Edit } from "lucide-react";
 
 interface KeywordBaseRepliesProps {
   chatbot: Inquiry[];
@@ -43,9 +44,13 @@ export default function KeywordBaseReplies({
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>{t("keywordHeader")}</TableHead>
-                <TableHead>{t("responseHeader")}</TableHead>
-                <TableHead className="text-right">
+                <TableHead className="text-start">
+                  {t("keywordHeader")}
+                </TableHead>
+                <TableHead className="text-start">
+                  {t("responseHeader")}
+                </TableHead>
+                <TableHead className="text-start">
                   {t("actionsHeader")}
                 </TableHead>
               </TableRow>
@@ -61,6 +66,7 @@ export default function KeywordBaseReplies({
                       size="sm"
                       onClick={() => handleEdit(item)}
                     >
+                      <Edit className="size-4" />
                       {t("editButton")}
                     </Button>
                   </TableCell>
@@ -91,11 +97,6 @@ export default function KeywordBaseReplies({
               </div>
             </Card>
           ))}
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex gap-4 mt-6 flex-wrap">
-          <Button variant="outline">{t("restoreButton")}</Button>
         </div>
       </CardContent>
     </Card>

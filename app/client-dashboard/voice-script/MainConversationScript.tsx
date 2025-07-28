@@ -63,21 +63,13 @@ export default function MainConversationScript({
 
             {/* Content area */}
             <Card className="p-4 mb-6 border-none shadow-none outline-none">
-              {getChatbotLoading ? (
-                <div className="space-y-4">
-                  <Skeleton className="h-10 w-full" />
-                  <Skeleton className="h-10 w-full" />
-                  <Skeleton className="h-10 w-full" />
-                </div>
-              ) : (
-                <ConversationScript
-                  chatbot={chatbot}
-                  getChatbotLoading={getChatbotLoading}
-                  t={t}
-                />
-              )}
+              <ConversationScript
+                chatbot={chatbot}
+                getChatbotLoading={getChatbotLoading}
+                t={t}
+              />
             </Card>
-            {total > 10 && (
+            {total > 5 && (
               <ConversationScriptPagination
                 pageIndex={pageIndex - 1}
                 pageSize={pageSize}

@@ -1288,6 +1288,20 @@
       "description": "These terms are subject to the regulations of the Kingdom of Saudi Arabia, and any dispute shall be resolved by the competent judicial authorities in the city of Riyadh."
     }
   },
+  "ConfirmDeleteDialog": {
+    "title": "Are you sure?",
+    "description": "This action cannot be undone. This will permanently delete the item.",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  },
+  "UpdateScriptDialog": {
+    "update_script": "Update Script",
+    "question": "Question",
+    "answer": "Answer",
+    "voice": "Voice",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  },
   "Home": {
     "dir": "ltr"
   }
