@@ -158,3 +158,19 @@ body {
   background-color: #10a5b1 !important;
   color: #fff !important;
 }
+
+.colored-btn {
+  border-radius: 9999px !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  background-image: linear-gradient(to right, #14b8a6, #0d9488);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all linear 0.3s;
+}
+.colored-btn:hover {
+  background-image: linear-gradient(
+    to right,
+    #0d9488,
+    #0f766e
+  ); /* hover:from-teal-600 hover:to-teal-700 */
+}

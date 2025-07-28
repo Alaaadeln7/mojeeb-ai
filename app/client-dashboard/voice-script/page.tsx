@@ -20,24 +20,19 @@ export default function VoiceScript() {
   const {
     chatbot,
     getChatbotLoading,
-    handleDeleteInquiry,
-    deleteInquiryLoading,
+    handleAddInquiry,
+    addInquiryLoading,
+    total,
+    totalPages,
+    currentPage,
+    currentLimit,
+    handlePageChange,
+    handleLimitChange,
+    hasPreviousPage,
+    hasNextPage,
   } = useChatbot();
 
   const { currentClient } = useClient();
-
-  if (getChatbotLoading) {
-    return (
-      <div className="p-5 sm:p-10 mb-20 space-y-6">
-        <Skeleton className="h-12 w-full" />
-        <div className="space-y-4">
-          <Skeleton className="h-32 w-full" />
-          <Skeleton className="h-64 w-full" />
-          <Skeleton className="h-64 w-full" />
-        </div>
-      </div>
-    );
-  }
 
   return (
     <>
@@ -48,13 +43,16 @@ export default function VoiceScript() {
 
         <MainConversationScript
           setIsModalOpen={setIsModalOpen}
-          setSelectedChatbot={setSelectInquiry}
-          selectedChatbot={selectInquiry}
           chatbot={chatbot}
           getChatbotLoading={getChatbotLoading}
-          handleDeleteInquiry={handleDeleteInquiry}
-          deleteInquiryLoading={deleteInquiryLoading}
-          chatbotId={currentClient?.chatbotId ?? ""}
+          total={total}
+          totalPages={totalPages}
+          currentPage={currentPage}
+          currentLimit={currentLimit}
+          handlePageChange={handlePageChange}
+          handleLimitChange={handleLimitChange}
+          hasPreviousPage={hasPreviousPage}
+          hasNextPage={hasNextPage}
         />
 
         <KeywordBaseReplies
@@ -67,6 +65,8 @@ export default function VoiceScript() {
       <AddConversationScriptModal
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
+        loading={addInquiryLoading}
+        onConfirm={handleAddInquiry}
       />
 
       <UpdateKeywordModal

@@ -30,9 +30,12 @@ export const chatbotApiSlice = createApi({
   }),
   tagTypes: ["Chatbot"],
   endpoints: (builder) => ({
-    getChatbot: builder.query<ChatbotData, { chatbotId: string }>({
-      query: ({ chatbotId }) => `/${chatbotId}`,
-      providesTags: ["Chatbot"],
+    getChatbot: builder.query({
+      query: ({ chatbotId, page, limit }) => ({
+        url: `/${chatbotId}?page=${page}&limit=${limit}`,
+        method: "GET",
+        providesTags: ["Chatbot"],
+      }),
     }),
     updateChatbot: builder.mutation<
       ChatbotData,

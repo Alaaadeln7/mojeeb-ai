@@ -73,7 +73,7 @@ export default function LandingPageHeader() {
                 <Button
                   asChild
                   variant="default"
-                  className="rounded-full px-6 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 shadow-md"
+                  className="rounded-full px-6 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 shadow-md transition-colors"
                 >
                   <Link href={handleRouteDashboard()}>{t("dashboard")}</Link>
                 </Button>
@@ -89,7 +89,7 @@ export default function LandingPageHeader() {
                   <Button
                     asChild
                     variant="default"
-                    className="rounded-full px-6 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 shadow-md"
+                    className="rounded-full px-6 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 shadow-md transition-colors"
                   >
                     <Link href="/create-enrollment-form">
                       {t("createEnrollmentForm")}

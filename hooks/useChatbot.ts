@@ -6,56 +6,17 @@ import {
   useUpdateInquiryMutation,
   useDeleteInquiryMutation,
 } from "@/store/api/chatbotApiSlice";
-import { toast } from "@/components/ui/sonner";
+import { showToast, toast } from "@/components/ui/sonner";
 import useClient from "./useClient";
-
-// Type definitions
-
-
-interface Chatbot {
-  id: string;
-  name: string;
-  // Add other chatbot properties as needed
-  inquiries: Inquiry[];
-}
-
-interface Inquiry {
-  id: string;
-  question: string;
-  answer: string;
-  keyword: string;
-  chatbotId: string;
-  createdAt?: string;
-  updatedAt?: string;
-}
-
-
-
-interface UpdateChatbotParams {
-  id: string;
-  name?: string;
-  // Include other updatable fields
-}
-
-interface AddInquiryParams {
-  question: string;
-  answer: string;
-  keyword: string;
-  chatbotId: string;
-}
-
-interface UpdateInquiryParams {
-  id: string;
-  question?: string;
-  answer?: string;
-  keyword?: string;
-  chatbotId: string;
-}
-
-interface DeleteInquiryParams {
-  id: string;
-  chatbotId: string;
-}
+import {
+  AddInquiryParams,
+  Chatbot,
+  DeleteInquiryParams,
+  Inquiry,
+  UpdateChatbotParams,
+  UpdateInquiryParams,
+} from "@/types/chatbot";
+import { useState } from "react";
 
 const handleError = (
   error: { data?: { message?: string } },
@@ -68,15 +29,25 @@ const handleError = (
 };
 
 const notifySuccess = (action: string): void => {
-  toast(`${action} successfully!`);
+  showToast(`${action} successfully!`, "success");
 };
 
 export default function useChatbot() {
   const { currentClient } = useClient();
-
-  // RTK Query hooks
+  const [currentPage, setCurrentPage] = useState(1);
+  const [currentLimit, setCurrentLimit] = useState(5);
+  const handlePageChange = (newPage: number): void => {
+    setCurrentPage(newPage);
+  };
+  const handleLimitChange = (newLimit: number): void => {
+    setCurrentLimit(newLimit);
+  };
   const { data: chatbot, isLoading: getChatbotLoading } = useGetChatbotQuery(
-    { chatbotId: currentClient?.chatbotId || "" },
+    {
+      chatbotId: currentClient?.chatbotId || "",
+      page: currentPage,
+      limit: currentLimit,
+    },
     { skip: !currentClient?.chatbotId }
   );
 
@@ -132,7 +103,7 @@ export default function useChatbot() {
         question,
         answer,
         keyword,
-        chatbotId: currentClient.chatbotId,
+        chatbotId: currentClient?.chatbotId,
       }).unwrap();
 
       if (res.data) notifySuccess("Inquiry added");
@@ -170,9 +141,12 @@ export default function useChatbot() {
       handleError(error as { data?: { message?: string } }, "delete inquiry");
     }
   };
-
   return {
-    chatbot: chatbot?.data?.inquiries,
+    chatbot: chatbot?.data?.data || [],
+    totalPages: chatbot?.data?.totalPages,
+    total: chatbot?.data?.total,
+    hasNextPage: chatbot?.data?.hasNextPage,
+    hasPreviousPage: chatbot?.data?.hasPreviousPage,
     handleUpdateChatbot,
     handleDeleteChatbot,
     getChatbotLoading,
@@ -184,5 +158,9 @@ export default function useChatbot() {
     updateInquiryLoading,
     deleteInquiryLoading,
     handleDeleteInquiry,
+    handlePageChange,
+    currentPage,
+    handleLimitChange,
+    currentLimit,
   };
 }

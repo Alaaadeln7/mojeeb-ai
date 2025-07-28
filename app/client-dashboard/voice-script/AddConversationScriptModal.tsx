@@ -8,7 +8,6 @@ import {
   AlertCircle,
   Loader2,
   User,
-  X,
 } from "lucide-react";
 import { useFormik } from "formik";
 import {
@@ -26,6 +25,10 @@ import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { toast } from "sonner";
 import * as Yup from "yup";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
+import { showToast } from "@/components/ui/sonner";
+import FormField from "@/components/molecules/FormField";
 
 interface FormValues {
   question: string;
@@ -36,21 +39,21 @@ interface FormValues {
 interface AddConversationScriptModalProps {
   isModalOpen: boolean;
   setIsModalOpen: (open: boolean) => void;
-  onSubmit?: (values: FormValues) => Promise<void>;
-  isLoading?: boolean;
+  onConfirm?: (values: FormValues) => Promise<void>;
+  loading?: boolean;
 }
 
 // Validation schema
 const AddConversationValidation = Yup.object({
   question: Yup.string()
-    .required("Customer message is required")
-    .min(5, "Message must be at least 5 characters"),
+    .required("AddConversationScriptModal.validation.question_required")
+    .min(5, "AddConversationScriptModal.validation.question_min"),
   answer: Yup.string()
-    .required("AI response is required")
-    .min(10, "Response must be at least 10 characters"),
+    .required("AddConversationScriptModal.validation.answer_required")
+    .min(10, "AddConversationScriptModal.validation.answer_min"),
   keyword: Yup.string()
-    .required("Keyword is required")
-    .min(2, "Keyword must be at least 2 characters"),
+    .required("AddConversationScriptModal.validation.keyword_required")
+    .min(2, "AddConversationScriptModal.validation.keyword_min"),
 });
 
 const ChatBubble = ({
@@ -62,25 +65,36 @@ const ChatBubble = ({
   children: React.ReactNode;
   error?: string;
 }) => {
+  const t = useTranslations("AddConversationScriptModal");
+  const locale = useLocale();
+  const isRTL = locale === "ar";
   const isAI = role === "ai";
 
   return (
     <div
-      className={`flex ${isAI ? "justify-start" : "justify-end"} w-full mb-6`}
+      className={cn(
+        "flex w-full mb-6",
+        isRTL ? "flex-row-reverse" : "justify-end"
+      )}
     >
       <div
-        className={`flex ${
-          isAI ? "flex-row" : "flex-row-reverse"
-        } items-start gap-3 max-w-[85%] w-full`}
+        className={cn(
+          "flex items-start gap-3 max-w-[85%] w-full",
+          isAI
+            ? isRTL
+              ? "flex-row-reverse"
+              : "flex-row"
+            : isRTL
+            ? "flex-row"
+            : "flex-row-reverse"
+        )}
       >
         {/* Avatar */}
         <Avatar className="w-8 h-8 flex-shrink-0 mt-1">
           <AvatarFallback
             className={cn(
               "text-white text-sm font-medium",
-              isAI
-                ? "bg-gradient-to-r from-violet-500 to-purple-600"
-                : "bg-gradient-to-r from-blue-500 to-indigo-600"
+              isAI ? "bg-[#10a5b1]" : "bg-[#3d4d58]"
             )}
           >
             {isAI ? <Bot className="w-4 h-4" /> : <User className="w-4 h-4" />}
@@ -89,14 +103,21 @@ const ChatBubble = ({
 
         {/* Message Container */}
         <div
-          className={`flex flex-col ${
-            isAI ? "items-start" : "items-end"
-          } flex-1 min-w-0`}
+          className={cn(
+            "flex flex-col flex-1 min-w-0",
+            isAI
+              ? isRTL
+                ? "items-end"
+                : "items-start"
+              : isRTL
+              ? "items-start"
+              : "items-end"
+          )}
         >
           {/* Sender Label */}
           <div className="mb-1">
-            <span className="text-xs font-medium text-muted-foreground">
-              {isAI ? "AI Assistant" : "Customer"}
+            <span className="text-xs font-medium text-[#3d4d58]">
+              {isAI ? t("ai_response_label") : t("customer_message_label")}
             </span>
           </div>
 
@@ -105,8 +126,8 @@ const ChatBubble = ({
             className={cn(
               "relative rounded-2xl px-4 py-3 shadow-sm max-w-full",
               isAI
-                ? "bg-muted/80 text-foreground rounded-tl-md"
-                : "bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-tr-md"
+                ? "bg-[#10a5b1]/10 text-[#3d4d58] rounded-tl-md"
+                : "bg-[#3d4d58] text-white rounded-tr-md"
             )}
           >
             <div className="text-sm leading-relaxed break-words">
@@ -116,9 +137,14 @@ const ChatBubble = ({
 
           {/* Error Message */}
           {error && (
-            <div className="flex items-center gap-1 mt-2 text-xs text-destructive">
+            <div
+              className={cn(
+                "flex items-center gap-1 mt-2 text-xs text-red-600",
+                isRTL ? "flex-row-reverse" : ""
+              )}
+            >
               <AlertCircle className="w-3 h-3 flex-shrink-0" />
-              <span>{error}</span>
+              <span>{t(error)}</span>
             </div>
           )}
         </div>
@@ -127,67 +153,16 @@ const ChatBubble = ({
   );
 };
 
-const FormField = ({
-  name,
-  label,
-  value,
-  onChange,
-  onBlur,
-  error,
-  textarea = false,
-  placeholder,
-}: {
-  name: string;
-  label: string;
-  value: string;
-  onChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => void;
-  onBlur: (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  error?: string;
-  textarea?: boolean;
-  placeholder?: string;
-}) => (
-  <div className="w-full">
-    {textarea ? (
-      <Textarea
-        id={name}
-        name={name}
-        value={value}
-        onChange={onChange}
-        onBlur={onBlur}
-        placeholder={placeholder}
-        className={cn(
-          "min-h-[80px] resize-none bg-transparent border-0 p-0 text-sm leading-relaxed placeholder:text-muted-foreground/60 focus-visible:ring-0 focus-visible:ring-offset-0",
-          error && "text-destructive"
-        )}
-        aria-describedby={error ? `${name}-error` : undefined}
-      />
-    ) : (
-      <Input
-        id={name}
-        name={name}
-        type="text"
-        value={value}
-        onChange={onChange}
-        onBlur={onBlur}
-        placeholder={placeholder}
-        className={cn(
-          "bg-transparent border-0 p-0 text-sm focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-muted-foreground/60",
-          error && "text-destructive"
-        )}
-        aria-describedby={error ? `${name}-error` : undefined}
-      />
-    )}
-  </div>
-);
-
 export default function AddConversationScriptModal({
   isModalOpen,
   setIsModalOpen,
-  onSubmit,
-  isLoading = false,
+  onConfirm,
+  loading,
 }: AddConversationScriptModalProps) {
+  const t = useTranslations("AddConversationScriptModal");
+  const locale = useLocale();
+  const isRTL = locale === "ar";
+
   const formik = useFormik<FormValues>({
     initialValues: {
       question: "",
@@ -197,15 +172,13 @@ export default function AddConversationScriptModal({
     validationSchema: AddConversationValidation,
     onSubmit: async (values, { resetForm }) => {
       try {
-        if (onSubmit) {
-          await onSubmit(values);
-        }
+        await onConfirm(values);
         resetForm();
         setIsModalOpen(false);
-        toast.success("Conversation script added successfully!");
+        showToast(t("success_message"), "success");
       } catch (error) {
         console.error(error);
-        toast.error("Failed to add conversation script");
+        toast.error(t("error_message"));
       }
     },
   });
@@ -217,31 +190,38 @@ export default function AddConversationScriptModal({
 
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-      <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-hidden p-0 gap-0">
+      <DialogContent
+        className={cn(
+          "sm:max-w-2xl max-h-[90vh] overflow-hidden p-0 gap-0",
+          isRTL && "rtl"
+        )}
+      >
         {/* Header */}
-        <DialogHeader className="px-6 py-4 border-b bg-gradient-to-r from-violet-50 to-purple-50">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-violet-500 to-purple-600 flex items-center justify-center">
+        <DialogHeader className="px-6 py-4 border-b bg-[#10a5b1]/10">
+          <div
+            className={cn(
+              "flex items-center justify-between",
+              isRTL && "flex-row-reverse"
+            )}
+          >
+            <div
+              className={cn(
+                "flex items-center gap-3",
+                isRTL && "flex-row-reverse"
+              )}
+            >
+              <div className="w-10 h-10 rounded-xl bg-[#10a5b1] flex items-center justify-center">
                 <MessageSquareText className="w-5 h-5 text-white" />
               </div>
               <div>
-                <DialogTitle className="text-xl font-semibold text-slate-800">
-                  Create New Conversation
+                <DialogTitle className="text-xl font-semibold text-[#3d4d58]">
+                  {t("title")}
                 </DialogTitle>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Add a customer-AI conversation script
+                <p className="text-sm text-[#3d4d58]/80 mt-1">
+                  {t("description")}
                 </p>
               </div>
             </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={handleClose}
-              className="text-slate-600 hover:text-slate-800"
-            >
-              <X className="w-5 h-5" />
-            </Button>
           </div>
         </DialogHeader>
 
@@ -250,10 +230,6 @@ export default function AddConversationScriptModal({
           <form onSubmit={formik.handleSubmit} className="p-6 space-y-6">
             {/* Chat Preview */}
             <div className="space-y-4">
-              <h3 className="text-sm font-medium text-slate-700 mb-4">
-                Conversation Preview
-              </h3>
-
               {/* Customer Message */}
               <ChatBubble
                 role="customer"
@@ -263,7 +239,7 @@ export default function AddConversationScriptModal({
               >
                 <FormField
                   name="question"
-                  label="Customer Message"
+                  label={t("customer_message_label")}
                   value={formik.values.question}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -271,7 +247,7 @@ export default function AddConversationScriptModal({
                     formik.touched.question ? formik.errors.question : undefined
                   }
                   textarea
-                  placeholder="What would the customer say?..."
+                  placeholder="customer_message_placeholder"
                 />
               </ChatBubble>
 
@@ -282,7 +258,7 @@ export default function AddConversationScriptModal({
               >
                 <FormField
                   name="answer"
-                  label="AI Response"
+                  label={t("ai_response_label")}
                   value={formik.values.answer}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -290,19 +266,19 @@ export default function AddConversationScriptModal({
                     formik.touched.answer ? formik.errors.answer : undefined
                   }
                   textarea
-                  placeholder="How should the AI respond?..."
+                  placeholder="ai_response_placeholder"
                 />
               </ChatBubble>
             </div>
 
             {/* Keyword Field */}
-            <Card className="p-4 bg-slate-50/50 border-slate-200">
+            <Card className="p-4 bg-[#10a5b1]/5 border-[#10a5b1]/20">
               <div className="space-y-2">
                 <Label
                   htmlFor="keyword"
-                  className="text-sm font-medium text-slate-700"
+                  className="text-sm font-medium text-[#3d4d58]"
                 >
-                  Trigger Keyword
+                  {t("trigger_keyword_label")}
                 </Label>
                 <Input
                   id="keyword"
@@ -310,52 +286,62 @@ export default function AddConversationScriptModal({
                   value={formik.values.keyword}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  placeholder="Enter keyword that triggers this conversation..."
+                  placeholder={t("trigger_keyword_placeholder")}
                   className={cn(
-                    "bg-white border-slate-200 focus:border-violet-300 focus:ring-violet-200",
+                    "bg-white border-[#10a5b1]/20 focus:border-[#10a5b1] focus:ring-[#10a5b1]/50",
                     formik.touched.keyword &&
                       formik.errors.keyword &&
-                      "border-destructive focus:border-destructive"
+                      "border-red-600 focus:border-red-600",
+                    isRTL && "text-right"
                   )}
                 />
                 {formik.touched.keyword && formik.errors.keyword && (
-                  <p className="text-xs text-destructive flex items-center gap-1">
+                  <p
+                    className={cn(
+                      "text-xs text-red-600 flex items-center gap-1",
+                      isRTL && "flex-row-reverse"
+                    )}
+                  >
                     <AlertCircle className="w-3 h-3" />
-                    {formik.errors.keyword}
+                    {t(formik.errors.keyword)}
                   </p>
                 )}
-                <p className="text-xs text-muted-foreground">
-                  This keyword will help match customer messages to this
-                  conversation script.
+                <p className="text-xs text-[#3d4d58]/80">
+                  {t("trigger_keyword_description")}
                 </p>
               </div>
             </Card>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row justify-end gap-3 pt-4 border-t">
+            <div
+              className={cn(
+                "flex flex-col sm:flex-row justify-end gap-3 pt-4 border-t border-[#10a5b1]/20",
+                isRTL && "sm:flex-row-reverse"
+              )}
+            >
               <Button
                 type="button"
                 variant="outline"
                 onClick={handleClose}
-                disabled={isLoading}
-                className="order-2 sm:order-1 bg-transparent"
+                disabled={loading}
+                className="order-2 sm:order-1 bg-transparent border-[#3d4d58] text-[#3d4d58] hover:bg-[#10a5b1]/10 hover:text-[#10a5b1]"
               >
-                Cancel
+                {t("cancel_button")}
               </Button>
               <Button
                 type="submit"
-                disabled={isLoading || !formik.isValid}
-                className="order-1 sm:order-2 bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white"
+                disabled={loading || !formik.isValid}
+                className="order-1 sm:order-2 bg-[#10a5b1] hover:bg-[#3d4d58] text-white"
               >
-                {isLoading ? (
+                {loading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Creating...
+                    {t("creating_button")}
                   </>
                 ) : (
                   <>
                     <Plus className="mr-2 h-4 w-4" />
-                    Create Conversation
+                    {t("create_button")}
                   </>
                 )}
               </Button>

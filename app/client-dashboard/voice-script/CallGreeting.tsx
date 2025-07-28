@@ -106,7 +106,7 @@ export default function CallGreeting() {
           onClick={handlePlay}
           disabled={isLoading || !text}
           size="icon"
-          className="w-12 h-12 flex-shrink-0"
+          className="w-12 h-12 flex-shrink-0 colored-btn"
           aria-label={t("playButtonAria")}
         >
           {isLoading ? (

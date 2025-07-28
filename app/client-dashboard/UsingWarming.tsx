@@ -20,7 +20,7 @@ export default function UsageWarning() {
       <CardContent className="flex flex-col items-center gap-4">
         <DataUsageCircle used={30} total={100} />
         <Link href={"client-dashboard/upgrade-plan"} className="w-full">
-          <Button variant="default" className="w-full">
+          <Button variant="default" className="w-full colored-btn">
             {t("upgradeButton")}
           </Button>
         </Link>

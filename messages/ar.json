@@ -280,7 +280,89 @@
   "MainConversationScript": {
     "title": "النص الرئيسي للمحادثة",
     "addButton": "إضافة سطر جديد",
-    "deleteButton": "حذف"
+    "deleteButton": "حذف",
+    "noConversations": "لا توجد نصوص محادثة متاحة",
+    "noConversationsDescription": "ابدء بانشاء نصوص محادثة جديدة",
+    "createScript": "انشاء نص",
+    "description": {
+      "title": "الوصف",
+      "placeholder": "وصف موجز للعميل"
+    },
+    "ConversationScript": {
+      "title": "نص المحادثة",
+      "addNewScript": "إضافة نص جديد"
+    }
+  },
+  "AddConversationScriptModal": {
+    "title": "إنشاء محادثة جديدة",
+    "description": "إضافة نص محادثة بين العميل والذكاء الاصطناعي",
+    "conversation_preview": "معاينة المحادثة",
+    "customer_message_label": "رسالة العميل",
+    "customer_message_placeholder": "ماذا سيقول العميل؟...",
+    "ai_response_label": "رد الذكاء الاصطناعي",
+    "ai_response_placeholder": "كيف يجب أن يرد الذكاء الاصطناعي؟...",
+    "trigger_keyword_label": "الكلمة المفتاحية",
+    "trigger_keyword_placeholder": "أدخل الكلمة المفتاحية التي تطلق هذه المحادثة...",
+    "trigger_keyword_description": "هذه الكلمة المفتاحية ستساعد في مطابقة رسائل العميل مع نص المحادثة.",
+    "cancel_button": "إلغاء",
+    "create_button": "إنشاء المحادثة",
+    "creating_button": "جارٍ الإنشاء...",
+    "success_message": "تمت إضافة نص المحادثة بنجاح!",
+    "error_message": "فشل في إضافة نص المحادثة",
+    "validation": {
+      "question_required": "رسالة العميل مطلوبة",
+      "question_min": "يجب أن تكون الرسالة 5 أحرف على الأقل",
+      "answer_required": "رد الذكاء الاصطناعي مطلوب",
+      "answer_min": "يجب أن يكون الرد 10 أحرف على الأقل",
+      "keyword_required": "الكلمة المفتاحية مطلوبة",
+      "keyword_min": "يجب أن تكون الكلمة المفتاحية حرفين على الأقل"
+    }
+  },
+  "DescriptionScript": {
+    "heading": "نص الوصف",
+    "addButton": "إضافة وصف",
+    "editButton": "تعديل الوصف",
+    "emptyState": {
+      "title": "لا يوجد نص وصف",
+      "description": "أضف نص وصف لتقديم معلومات مفصلة عن منتجك أو خدمتك."
+    },
+    "defaultTitle": "نظرة عامة على المنتج",
+    "defaultDescription": "يقدم منتجنا المتميز حلولًا مبتكرة مع تقنية متطورة مصممة لتبسيط سير العمل وزيادة الإنتاجية. بواجهته البديهية وميزاته القوية، فهو الأداة المثالية للمحترفين الذين يسعون للكفاءة."
+  },
+  "DescriptionScriptDialog": {
+    "editTitle": "تعديل نص الوصف",
+    "createTitle": "إنشاء نص وصف",
+    "editSubtitle": "قم بتحديث نص الوصف الخاص بك",
+    "createSubtitle": "أضف نص وصف لمنتجك أو خدمتك",
+    "form": {
+      "titleLabel": "العنوان",
+      "titlePlaceholder": "أدخل عنوانًا لهذا الوصف...",
+      "titleHelper": "يساعد العنوان الواضح في تحديد نص الوصف هذا.",
+      "descriptionLabel": "الوصف",
+      "descriptionPlaceholder": "أدخل الوصف التفصيلي...",
+      "descriptionHelper": "سيتم استخدام هذا الوصف عند تشغيله بواسطة النظام."
+    },
+    "buttons": {
+      "cancel": "إلغاء",
+      "save": "حفظ التغييرات",
+      "create": "إنشاء وصف",
+      "saving": "جاري الحفظ...",
+      "creating": "جاري الإنشاء..."
+    },
+    "validation": {
+      "titleRequired": "العنوان مطلوب",
+      "titleMinLength": "يجب أن يكون العنوان 3 أحرف على الأقل",
+      "descriptionRequired": "الوصف مطلوب",
+      "descriptionMinLength": "يجب أن يكون الوصف 10 أحرف على الأقل"
+    },
+    "success": {
+      "update": "تم تحديث نص الوصف بنجاح!",
+      "create": "تم إضافة نص الوصف بنجاح!"
+    },
+    "errors": {
+      "update": "فشل تحديث نص الوصف",
+      "create": "فشل إضافة نص الوصف"
+    }
   },
   "KeywordBaseReplies": {
     "title": "الردود القائمة على الكلمات المفتاحية",

@@ -278,7 +278,88 @@
   "MainConversationScript": {
     "title": "Main Conversation Script",
     "addButton": "Add New Line",
-    "deleteButton": "Delete"
+    "deleteButton": "Delete",
+    "noConversations": "No conversation scripts available",
+    "noConversationsDescription": "Start by creating your first conversation script",
+    "description": {
+      "title": "Description",
+      "placeholder": "Enter a description..."
+    },
+    "ConversationScript": {
+      "title": "Conversation Script",
+      "addNewScript": "Add New Script"
+    }
+  },
+  "AddConversationScriptModal": {
+    "title": "Create New Conversation",
+    "description": "Add a customer-AI conversation script",
+    "conversation_preview": "Conversation Preview",
+    "customer_message_label": "Customer Message",
+    "customer_message_placeholder": "What would the customer say?...",
+    "ai_response_label": "AI Response",
+    "ai_response_placeholder": "How should the AI respond?...",
+    "trigger_keyword_label": "Trigger Keyword",
+    "trigger_keyword_placeholder": "Enter keyword that triggers this conversation...",
+    "trigger_keyword_description": "This keyword will help match customer messages to this conversation script.",
+    "cancel_button": "Cancel",
+    "create_button": "Create Conversation",
+    "creating_button": "Creating...",
+    "success_message": "Conversation script added successfully!",
+    "error_message": "Failed to add conversation script",
+    "validation": {
+      "question_required": "Customer message is required",
+      "question_min": "Message must be at least 5 characters",
+      "answer_required": "AI response is required",
+      "answer_min": "Response must be at least 10 characters",
+      "keyword_required": "Keyword is required",
+      "keyword_min": "Keyword must be at least 2 characters"
+    }
+  },
+  "DescriptionScript": {
+    "heading": "Description Script",
+    "addButton": "Add Description",
+    "editButton": "Edit Description",
+    "emptyState": {
+      "title": "No Description Script",
+      "description": "Add a description script to provide detailed information about your product or service."
+    },
+    "defaultTitle": "Product Overview",
+    "defaultDescription": "Our premium product offers innovative solutions with cutting-edge technology designed to streamline your workflow and boost productivity. With its intuitive interface and robust features, it's the perfect tool for professionals seeking efficiency."
+  },
+  "DescriptionScriptDialog": {
+    "editTitle": "Edit Description Script",
+    "createTitle": "Create Description Script",
+    "editSubtitle": "Update your description script",
+    "createSubtitle": "Add a description script for your product or service",
+    "form": {
+      "titleLabel": "Title",
+      "titlePlaceholder": "Enter a title for this description...",
+      "titleHelper": "A clear title helps identify this description script.",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Enter the detailed description...",
+      "descriptionHelper": "This description will be used when triggered by the system."
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Save Changes",
+      "create": "Create Description",
+      "saving": "Saving...",
+      "creating": "Creating..."
+    },
+    "validation": {
+      "titleRequired": "Title is required",
+      "titleMinLength": "Title must be at least 3 characters",
+      "descriptionRequired": "Description is required",
+      "descriptionMinLength": "Description must be at least 10 characters"
+    },
+    "success": {
+      "update": "Description script updated successfully!",
+      "create": "Description script added successfully!"
+    },
+    "errors": {
+      "update": "Failed to update description script",
+      "create": "Failed to add description script"
+    }
   },
   "KeywordBaseReplies": {
     "title": "Keyword-based Replies",
