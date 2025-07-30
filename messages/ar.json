@@ -1299,6 +1299,10 @@
     "cancel": "إلغاء",
     "confirm": "تأكيد"
   },
+  "tabs": {
+    "conversations": "المحادثات",
+    "description": "الوصف"
+  },
   "Home": {
     "dir": "rtl"
   }

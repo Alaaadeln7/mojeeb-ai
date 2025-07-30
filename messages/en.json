@@ -1302,6 +1302,10 @@
     "cancel": "Cancel",
     "confirm": "Confirm"
   },
+  "tabs": {
+    "conversations": "conversations",
+    "description": "description"
+  },
   "Home": {
     "dir": "ltr"
   }

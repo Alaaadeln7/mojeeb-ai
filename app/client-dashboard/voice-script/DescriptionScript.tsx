@@ -8,27 +8,28 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 
 interface DescriptionData {
-  title: string;
   description: string;
 }
 
-export default function DescriptionScript() {
+export default function DescriptionScript({
+  description,
+}: {
+  description: string;
+}) {
   const t = useTranslations("DescriptionScript");
   const router = useRouter();
   const [openAddDialog, setOpenAddDialog] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [descriptionData, setDescriptionData] =
     useState<DescriptionData | null>({
-      title: t("defaultTitle"),
       description: t("defaultDescription"),
     });
 
   const handleSaveDescription = async (values: DescriptionData) => {
-    // In a real app, you would save to your API here
     setDescriptionData(values);
     setOpenAddDialog(false);
     setIsEditing(false);
-    router.refresh(); // Refresh to update any server-side translations
+    router.refresh();
   };
 
   const handleEdit = () => {
@@ -81,12 +82,7 @@ export default function DescriptionScript() {
               <FileText className="w-6 h-6 text-blue-600" />
             </div>
             <div className="flex-1">
-              <h3 className="text-lg font-medium text-gray-900 mb-2">
-                {descriptionData.title}
-              </h3>
-              <p className="text-gray-600 whitespace-pre-line">
-                {descriptionData.description}
-              </p>
+              <p className="text-gray-600 whitespace-pre-line">{description}</p>
             </div>
           </div>
         </Card>

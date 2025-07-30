@@ -6,6 +6,7 @@ import {
   useUpdateInquiryMutation,
   useDeleteInquiryMutation,
   useSpeakMutation,
+  useCreateOrUpdateDescriptionMutation,
 } from "@/store/api/chatbotApiSlice";
 import { showToast, toast } from "@/components/ui/sonner";
 import useClient from "./useClient";
@@ -62,7 +63,10 @@ export default function useChatbot() {
     useUpdateInquiryMutation();
   const [deleteInquiry, { isLoading: deleteInquiryLoading }] =
     useDeleteInquiryMutation();
-
+  const [
+    createOrUpdateDescription,
+    { isLoading: createOrUpdateDescriptionLoading },
+  ] = useCreateOrUpdateDescriptionMutation();
   const [speak, { isLoading: speakLoading }] = useSpeakMutation();
   // Chatbot operations
   const handleUpdateChatbot = async (
@@ -144,7 +148,16 @@ export default function useChatbot() {
       handleError(error as { data?: { message?: string } }, "delete inquiry");
     }
   };
-
+  const handleUpdateDescription = async ({ description }) => {
+    try {
+      await createOrUpdateDescription({
+        description,
+        chatbotId: currentClient?.chatbotId,
+      }).unwrap();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const handleSpeak = async (body) => {
     try {
       await speak(body);
@@ -152,8 +165,10 @@ export default function useChatbot() {
       console.log(error);
     }
   };
+
   return {
     chatbot: chatbot?.data?.data || [],
+    description: chatbot?.data?.description,
     chatbotId: currentClient?.chatbotId || "",
     totalPages: chatbot?.data?.totalPages,
     total: chatbot?.data?.total,
@@ -176,5 +191,7 @@ export default function useChatbot() {
     currentLimit,
     speakLoading,
     handleSpeak,
+    handleUpdateDescription,
+    createOrUpdateDescriptionLoading,
   };
 }

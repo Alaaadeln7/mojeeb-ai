@@ -2,7 +2,7 @@
 
 import type React from "react";
 import { FileText, Plus, AlertCircle, Loader2, Save } from "lucide-react";
-import { useFormik } from "formik";
+import { useFormik, validateYupSchema } from "formik";
 import {
   Dialog,
   DialogContent,
@@ -10,7 +10,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
@@ -19,6 +18,7 @@ import { toast } from "sonner";
 import * as Yup from "yup";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
+import useChatbot from "@/hooks/useChatbot";
 
 interface FormValues {
   title: string;
@@ -45,12 +45,10 @@ export default function AddDescriptionScriptDialog({
   const t = useTranslations("DescriptionScriptDialog");
   const router = useRouter();
   const isRTL = router.locale === "ar";
-
+  const { handleUpdateDescription, createOrUpdateDescriptionLoading } =
+    useChatbot();
   // Validation schema
   const AddDescriptionValidation = Yup.object({
-    title: Yup.string()
-      .required(t("validation.titleRequired"))
-      .min(3, t("validation.titleMinLength")),
     description: Yup.string()
       .required(t("validation.descriptionRequired"))
       .min(10, t("validation.descriptionMinLength")),
@@ -58,14 +56,13 @@ export default function AddDescriptionScriptDialog({
 
   const formik = useFormik<FormValues>({
     initialValues: initialValues || {
-      title: "",
       description: "",
     },
     validationSchema: AddDescriptionValidation,
     onSubmit: async (values, { resetForm }) => {
       try {
         if (onSubmit) {
-          await onSubmit(values);
+          await handleUpdateDescription({ description: values.description });
           if (!isEditing) {
             resetForm();
           }
@@ -122,41 +119,6 @@ export default function AddDescriptionScriptDialog({
             className="p-6 space-y-6"
             dir={isRTL ? "rtl" : "ltr"}
           >
-            {/* Title Field */}
-            <Card className="p-4 bg-slate-50/50 border-slate-200">
-              <div className="space-y-2">
-                <Label
-                  htmlFor="title"
-                  className="text-sm font-medium text-slate-700"
-                >
-                  {t("form.titleLabel")}
-                </Label>
-                <Input
-                  id="title"
-                  name="title"
-                  value={formik.values.title}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  placeholder={t("form.titlePlaceholder")}
-                  className={cn(
-                    "bg-white border-slate-200 focus:border-blue-300 focus:ring-blue-200",
-                    formik.touched.title &&
-                      formik.errors.title &&
-                      "border-destructive focus:border-destructive"
-                  )}
-                />
-                {formik.touched.title && formik.errors.title && (
-                  <p className="text-xs text-destructive flex items-center gap-1">
-                    <AlertCircle className="w-3 h-3" />
-                    {formik.errors.title}
-                  </p>
-                )}
-                <p className="text-xs text-muted-foreground">
-                  {t("form.titleHelper")}
-                </p>
-              </div>
-            </Card>
-
             {/* Description Field */}
             <Card className="p-4 bg-slate-50/50 border-slate-200">
               <div className="space-y-2">
@@ -231,7 +193,20 @@ export default function AddDescriptionScriptDialog({
                     ) : (
                       <Plus className={`${isRTL ? "ml-2" : "mr-2"} h-4 w-4`} />
                     )}
-                    {isEditing ? t("buttons.save") : t("buttons.create")}
+                    {createOrUpdateDescriptionLoading ? (
+                      <>
+                        <Loader2
+                          className={`${
+                            isRTL ? "ml-2" : "mr-2"
+                          } h-4 w-4 animate-spin`}
+                        />
+                        {isEditing ? t("buttons.save") : t("buttons.create")}
+                      </>
+                    ) : isEditing ? (
+                      t("buttons.save")
+                    ) : (
+                      t("buttons.create")
+                    )}
                   </>
                 )}
               </Button>

@@ -90,6 +90,7 @@ export interface MainConversationScriptProps {
   hasPreviousPage: boolean;
   hasNextPage: boolean;
   setOpenConfirmDelete: (open: boolean) => void;
+  description: string;
 }
 
 export interface ConversationScriptPaginationProps {

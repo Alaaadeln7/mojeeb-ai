@@ -117,6 +117,17 @@ export const chatbotApiSlice = createApi({
         },
       }),
     }),
+    createOrUpdateDescription: builder.mutation({
+      query: (body) => ({
+        url: "/add-description",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: (result, error, { chatbotId }) => [
+        { type: "Chatbot", id: chatbotId },
+        { type: "Inquiry", id: "LIST" },
+      ],
+    }),
   }),
 });
 
@@ -128,4 +139,5 @@ export const {
   useUpdateInquiryMutation,
   useDeleteInquiryMutation,
   useSpeakMutation,
+  useCreateOrUpdateDescriptionMutation,
 } = chatbotApiSlice;
