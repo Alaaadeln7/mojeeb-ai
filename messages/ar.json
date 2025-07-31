@@ -399,42 +399,94 @@
     "addButton": "إضافة محادثة",
     "processingButton": "جاري المعالجة..."
   },
-  "AccountSettings": {
-    "title": "إعدادات الحساب",
-    "editButton": "تعديل",
-    "emailLabel": "البريد الإلكتروني",
-    "addressLabel": "العنوان",
-    "phoneLabel": "رقم الهاتف"
-  },
-  "IntegrationSettings": {
-    "title": "إعدادات التكامل",
-    "googleCalendar": "تقويم جوجل",
-    "slack": "سلاك",
-    "googlePlaceholder": "https://example.com",
-    "slackPlaceholder": "رابط ويب هوك",
-    "connectButton": "اتصل"
-  },
-  "LanguageSettingsClient": {
-    "title": "إعدادات اللغة والصوت",
-    "applicationLanguage": "لغة التطبيق",
-    "voiceAssistant": "المساعد الصوتي",
-    "defaultAIVoice": "الصوت الافتراضي للذكاء الاصطناعي",
-    "selectLanguage": "اختر لغتك",
-    "selectVoiceAssistant": "اختر المساعد الصوتي",
-    "selectAIVoice": "اختر صوت الذكاء الاصطناعي",
-    "maleVoice": "صوت ذكر",
-    "femaleVoice": "صوت أنثى",
-    "neutralVoice": "صوت محايد",
-    "natural": "طبيعي",
-    "professional": "احترافي",
-    "friendly": "ودود"
-  },
-  "NotificationsPreference": {
-    "title": "تفضيلات الإشعارات",
-    "emailNotifications": "إشعارات البريد الإلكتروني",
-    "planUsageAlert": "تنبيه استخدام الخطة",
-    "ticketEscalationAlert": "تنبيه تصعيد التذكرة",
-    "performanceReports": "تقارير الأداء"
+  "clientSettingPage": {
+    "title": "الاعدادات",
+    "subTitle": "تكوين وتخصيص تجربة مجيب لك",
+    "accountTitle": "اعدادات الحساب",
+    "voiceTitle": "اعدادات الصوت",
+    "integrationTitle": "اعدادات التكامل",
+    "notificationPreferences": "تفضيلات الاشعارات",
+    "accountDesc": "إدارة ملفك الشخصي وكلمة المرور وإعدادات الخصوصية.",
+    "voiceDesc": "قم بتخصيص المساعد الصوتي المفضل لديك.",
+    "integrationDesc": "قم بتوصيل مُجيب AI بخدمات خارجية مثل Slack.",
+    "notificationPreferencesDesc": "تكوين تنبيهات البريد الإلكتروني والإشعارات المتعلقة بالاستخدام.",
+    "AccountPage": {
+      "dir": "rtl",
+      "title": "إعدادات الحساب",
+      "subtitle": "إدارة معلوماتك الشخصية وكلمة المرور وتفضيلات الخصوصية.",
+      "profileSection": "معلومات الملف الشخصي",
+      "profileDescription": "تحديث بياناتك الشخصية ومعلومات الاتصال.",
+      "fullName": "الاسم الكامل",
+      "email": "عنوان البريد الإلكتروني",
+      "emailNote": "لا يمكن تغيير البريد الإلكتروني من هنا. يرجى الاتصال بالدعم إذا لزم الأمر.",
+      "bio": "السيرة الذاتية",
+      "bioContent": "مهتمة بتكنولوجيا المنزل الذكي وتحسين الروتين اليومي للكفاءة والراحة.",
+      "bioDescription": "وصف موجز لملفك الشخصي.",
+      "phone": "رقم الهاتف",
+      "location": "الموقع",
+      "cancel": "إلغاء",
+      "save": "حفظ التغييرات"
+    },
+    "PasswordManagement": {
+      "title": "إدارة كلمة المرور",
+      "description": "قم بتحديث كلمة المرور الخاصة بك لتعزيز أمان الحساب.",
+      "currentPassword": "كلمة المرور الحالية",
+      "currentPasswordPlaceholder": "أدخل كلمة المرور الحالية",
+      "newPassword": "كلمة المرور الجديدة",
+      "newPasswordPlaceholder": "أدخل كلمة المرور الجديدة",
+      "passwordRequirements": "يجب أن تحتوي كلمة المرور على رقم، وحرف خاص، ومزيج من الأحرف الكبيرة والصغيرة.",
+      "confirmNewPassword": "تأكيد كلمة المرور الجديدة",
+      "confirmNewPasswordPlaceholder": "قم بتأكيد كلمة المرور الجديدة",
+      "cancel": "إلغاء",
+      "saveChanges": "حفظ التغييرات",
+      "saving": "جاري الحفظ...",
+      "successTitle": "نجاح",
+      "successDescription": "تم تحديث كلمة المرور بنجاح.",
+      "errorTitle": "خطأ",
+      "errorDescription": "حدث خطأ أثناء تحديث كلمة المرور. يرجى المحاولة مرة أخرى."
+    },
+    "integrationSettings": {
+      "title": "إعدادات التكامل",
+      "description": "قم بتوصيل التطبيقات والخدمات المفضلة لديك لتبسيط سير العمل",
+      "slack": {
+        "title": "سلاك",
+        "description": "تواصل مع فريقك في سلاك للتعاون السلس"
+      },
+      "googleCalendar": {
+        "title": "تقويم جوجل",
+        "description": "تواصل مع فريقك في تقويم جوجل لسهولة الجدولة"
+      },
+      "whatsapp": {
+        "title": "واتساب",
+        "description": "تواصل مع فريقك في واتساب لسهولة التعاون"
+      }
+    },
+    "notificationSettings": {
+      "title": "تفضيلات الاشعارات",
+      "description": "قم بتحديث اعدادات الاشعارات الخاصة بك لتحسين تجربتك.",
+      "emailNotifications": {
+        "title": "إشعارات البريد الإلكتروني",
+        "description": "تحكم في رسائل البريد الإلكتروني التي تتلقاها حول نشاطك والتحديثات المهمة.",
+        "items": {
+          "dailyReports": {
+            "title": "تقارير الأداء اليومية",
+            "description": "تلخيص لنشاط لوحة التحكم والرؤى."
+          },
+          "productUpdates": {
+            "title": "تحديثات المنتج والإعلانات",
+            "description": "كن على اطلاع بالميزات الجديدة والتحسينات وتغييرات الخدمة."
+          },
+          "marketingEmails": {
+            "title": "رسائل التسويق والعروض الترويجية",
+            "description": "استقبل عروضًا ونصائحًا وأخبارًا من Mojeeb AI والشركاء."
+          },
+          "securityAlerts": {
+            "title": "تنبيهات الأمان والحساب",
+            "description": "إشعارات مهمة حول أمان حسابك أو نشاط تسجيل الدخول."
+          }
+        }
+      }
+    }
   },
 
   "Profile": {

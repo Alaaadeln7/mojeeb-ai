@@ -51,3 +51,22 @@ export const verifyOtpPasswordValidation = yup.object({
     .length(6, "otpLength")
     .matches(/^[0-9]+$/, "otpNumeric"),
 });
+
+export const PasswordSchema = yup.object().shape({
+  currentPassword: yup
+    .string()
+    .required("Current password is required")
+    .min(8, "Password must be at least 8 characters"),
+  newPassword: yup
+    .string()
+    .required("New password is required")
+    .min(8, "Password must be at least 8 characters")
+    .matches(/[A-Z]/, "Must contain at least one uppercase letter")
+    .matches(/[a-z]/, "Must contain at least one lowercase letter")
+    .matches(/[0-9]/, "Must contain at least one number")
+    .matches(/[^A-Za-z0-9]/, "Must contain at least one special character"),
+  confirmPassword: yup
+    .string()
+    .required("Please confirm your password")
+    .oneOf([yup.ref("newPassword")], "Passwords must match"),
+});

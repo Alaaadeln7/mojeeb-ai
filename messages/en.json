@@ -397,44 +397,96 @@
     "addButton": "Add Conversation",
     "processingButton": "Processing..."
   },
-  "AccountSettings": {
-    "title": "Account Settings",
-    "editButton": "Edit",
-    "emailLabel": "Email",
-    "addressLabel": "Address",
-    "phoneLabel": "Phone Number"
-  },
-  "IntegrationSettings": {
-    "title": "Integration Settings",
-    "googleCalendar": "Google Calendar",
-    "slack": "Slack",
-    "googlePlaceholder": "https://example.com",
-    "slackPlaceholder": "webhook url",
-    "connectButton": "Connect"
-  },
-  "LanguageSettingsClient": {
-    "title": "Language & Voice Preference",
-    "applicationLanguage": "Application Language",
-    "voiceAssistant": "Voice Assistant",
-    "defaultAIVoice": "Default AI Voice",
-    "selectLanguage": "Select your language",
-    "selectVoiceAssistant": "Select voice assistant",
-    "selectAIVoice": "Select AI voice",
-    "maleVoice": "Male Voice",
-    "femaleVoice": "Female Voice",
-    "neutralVoice": "Neutral Voice",
-    "natural": "Natural",
-    "professional": "Professional",
-    "friendly": "Friendly"
-  },
-  "NotificationsPreference": {
-    "title": "Notifications Preference",
-    "emailNotifications": "Email Notifications",
-    "planUsageAlert": "Plan Usage Alert",
-    "ticketEscalationAlert": "Ticket Escalation Alert",
-    "performanceReports": "Performance Reports"
-  },
 
+  "clientSettingPage": {
+    "title": "Settings",
+    "subTitle": "Configure and personalize your Mojeeb experience.",
+    "accountTitle": "Account Settings",
+    "voiceTitle": "Voice Preference",
+    "integrationTitle": "Integration Settings",
+    "notificationPreferences": "Notifications Preference",
+    "accountDesc": "Manage your profile, password, and privacy settings.",
+    "voiceDesc": "Customize your preferred voice assistant.",
+    "integrationDesc": "Connect SmartDashboard with external services like Slack.",
+    "notificationPreferencesDesc": "Configure email alerts and usage-related notifications.",
+    "AccountPage": {
+      "dir": "ltr",
+      "title": "Account Settings",
+      "subtitle": "Manage your personal information, password, and privacy preferences.",
+      "profileSection": "Profile Information",
+      "profileDescription": "Update your personal details and contact information.",
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "emailNote": "Email cannot be changed from here. Please contact support if needed.",
+      "bio": "Bio",
+      "bioContent": "Passionate about smart home technology and optimizing daily routines for efficiency and comfort.",
+      "bioDescription": "A brief description for your profile.",
+      "phone": "Phone Number",
+      "location": "Location",
+      "cancel": "Cancel",
+      "save": "Save changes"
+    },
+    "PasswordManagement": {
+      "title": "Password Management",
+      "description": "Update your password for enhanced account security.",
+      "currentPassword": "Current Password",
+      "currentPasswordPlaceholder": "Enter your current password",
+      "newPassword": "New Password",
+      "newPasswordPlaceholder": "Enter your new password",
+      "passwordRequirements": "Password must include a number, a special character, and a mix of uppercase and lowercase letters.",
+      "confirmNewPassword": "Confirm New Password",
+      "confirmNewPasswordPlaceholder": "Confirm your new password",
+      "cancel": "Cancel",
+      "saveChanges": "Save changes",
+      "saving": "Saving...",
+      "successTitle": "Success",
+      "successDescription": "Your password has been updated successfully.",
+      "errorTitle": "Error",
+      "errorDescription": "An error occurred while updating your password. Please try again."
+    },
+    "integrationSettings": {
+      "title": "Integration Settings",
+      "description": "Connect your favorite apps and services to streamline your workflow",
+      "slack": {
+        "title": "Slack",
+        "description": "Connect with your team in Slack for seamless collaboration"
+      },
+      "googleCalendar": {
+        "title": "Google Calendar",
+        "description": "Connect with your team in Google Calendar for easy scheduling"
+      },
+      "whatsapp": {
+        "title": "WhatsApp",
+        "description": "Connect with your team in WhatsApp for easy collaboration"
+      }
+    },
+    "notificationSettings": {
+      "title": "Notification Preference",
+      "description": "Configure email alerts and usage-related notifications.",
+      "emailNotifications": {
+        "title": "Email Notifications",
+        "description": "Control which emails you receive about your activity and important updates.",
+        "items": {
+          "dailyReports": {
+            "title": "Daily Performance Reports",
+            "description": "Receive a summary of your dashboard activity and insights."
+          },
+          "productUpdates": {
+            "title": "Product Updates & Announcements",
+            "description": "Stay informed about new features, improvements, and service changes."
+          },
+          "marketingEmails": {
+            "title": "Marketing & Promotional Emails",
+            "description": "Receive offers, tips, and news from Mojeeb AI and partners."
+          },
+          "securityAlerts": {
+            "title": "Security & Account Alerts",
+            "description": "Important notifications about your account security or login activity."
+          }
+        }
+      }
+    }
+  },
   "Profile": {
     "Modal": {
       "title": "Client Profile",
@@ -469,22 +521,6 @@
     }
   },
 
-  "ThemeSettings": {
-    "title": "Theme",
-    "description": "Choose your theme",
-    "light": "Light",
-    "dark": "Dark",
-    "system": "System"
-  },
-  "SettingsClient": {
-    "accountSettings": "Account Settings",
-    "themeSettings": "Theme Settings",
-    "languageSettings": "Language Settings",
-    "integrationSettings": "Integration Settings",
-    "notificationPreferences": "Notification Preferences",
-    "saveChanges": "Save Changes",
-    "editProfile": "Edit Profile"
-  },
   "CallsAndTickets": {
     "title": "Calls & Tickets",
     "statusFilterPlaceholder": "Filter by status",

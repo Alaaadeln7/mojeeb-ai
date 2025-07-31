@@ -2,11 +2,9 @@
 
 import * as React from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { NavUser } from "@/components/organisms/nav-user";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -24,36 +22,16 @@ import {
 import NavMainClientDashboard from "./NavMainClientDashboard";
 import Image from "next/image";
 import logoImage from "../../public/mojeb-ai-logo.png";
-import useAuth from "@/hooks/useAuth";
-// Define interfaces for type safety
 interface NavItem {
   title: string;
   url: string;
   icon: LucideIcon;
 }
 
-interface UserData {
-  name: string;
-  email: string;
-  avatar: string;
-  logoutText: string;
-}
-
 export default function ClientSidebar({ ...props }) {
   const t = useTranslations("clientSidebar");
   const locale = useLocale();
   const isRTL = locale === "ar";
-  const [fullName, setFullName] = React.useState<string>("");
-  const [email, setEmail] = React.useState<string>("");
-  const { user, loading } = useAuth();
-  React.useEffect(() => {
-    if (loading) {
-      if (user?.role === "client") {
-        setFullName(user?.fullName);
-        setEmail(user?.email);
-      }
-    }
-  }, [user, loading]);
   const navItems: NavItem[] = [
     {
       title: t("navItems.dashboard"),

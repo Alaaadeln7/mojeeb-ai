@@ -31,7 +31,7 @@ export default function ClientDashboardHeader({
   const t = useTranslations("Dashboard.Header");
   const { logout, loading: authLoading } = useAuth();
   return (
-    <header className="flex items-center justify-between p-4 px-6 border-b">
+    <header className="flex items-center justify-between p-2 px-6 border-b">
       <SidebarTrigger />
 
       <div className="flex items-center gap-2">
